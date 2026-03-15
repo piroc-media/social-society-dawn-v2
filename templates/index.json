@@ -42,12 +42,12 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Let the Good Times Roll",
+        "title": "Hosting Passover? Set the Table with us.",
         "heading_size": "h1",
         "description": "",
         "show_description": true,
         "description_style": "body",
-        "collection": "mardi-gras",
+        "collection": "passover",
         "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
@@ -73,22 +73,22 @@
         "heading_eMGYA4": {
           "type": "heading",
           "settings": {
-            "heading": "Celebrate the Grad",
+            "heading": "Mahjong at The Social Society",
             "heading_size": "h1"
           }
         },
         "text_DDdyhh": {
           "type": "text",
           "settings": {
-            "text": "<p>Big milestones deserve big celebrations. We create eye-catching balloon moments, stock party supplies for every graduation style, and carry gifts they’ll actually love. Let’s make their day unforgettable. </p>",
+            "text": "<p>Whether you're brand new to mahjong or ready to sharpen your skills, we’ve got a seat at the table. Join us for <a href=\"https://thesocialsociety.com/blogs/in-store-events\" target=\"_blank\" title=\"https://thesocialsociety.com/blogs/in-store-events\">Learn to Play lessons</a>, private guided play, and upcoming open play nights. We also carry beautiful tiles, mats, and accessories from Oh My Mahjong — available with an exclusive 10% discount.</p><p>Want to learn more or reserve your spot? Contact us and we’ll help you get started.</p>",
             "text_style": "body"
           }
         },
         "button_DtegBJ": {
           "type": "button",
           "settings": {
-            "button_label": "GRADUATION",
-            "button_link": "shopify://collections/graduation-1",
+            "button_label": "Mahj With Us",
+            "button_link": "shopify://pages/contact",
             "button_style_secondary": false,
             "newsletter_link": false
           }
@@ -100,15 +100,15 @@
         "button_DtegBJ"
       ],
       "settings": {
-        "image": "shopify://shop_images/IMG_2503.jpg",
+        "image": "shopify://shop_images/IMG_9289_43839d92-127e-4f35-92f0-b78d30f36c03.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-fc47b201-e5ce-46eb-809b-164ec8c2d8d6",
-        "color_scheme": "scheme-fc47b201-e5ce-46eb-809b-164ec8c2d8d6",
+        "section_color_scheme": "scheme-e343538e-d2ea-442b-b8a4-884c1abfee7d",
+        "color_scheme": "scheme-e343538e-d2ea-442b-b8a4-884c1abfee7d",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 0,
