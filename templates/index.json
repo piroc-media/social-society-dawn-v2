@@ -121,37 +121,37 @@
         "product_Kk8jeW": {
           "type": "product",
           "settings": {
-            "product": "partee-time-cocktail-napkins-copy"
+            "product": "26_inch_mickey_mouse_forever_number_2"
           }
         },
         "product_MFARKj": {
           "type": "product",
           "settings": {
-            "product": "18-golf-ball-balloon"
+            "product": "16_inch_black_marblez_orbz"
           }
         },
         "product_3KKNGf": {
           "type": "product",
           "settings": {
-            "product": "golf-crossed-clubs-notecard-set"
+            "product": "17_inch_cube_get_well_feel_better"
           }
         },
         "product_PX6LyV": {
           "type": "product",
           "settings": {
-            "product": "golf_cart_cups"
+            "product": "30-yay-grad-cap-balloon"
           }
         },
         "product_tPaRHa": {
           "type": "product",
           "settings": {
-            "product": "wheres_my_caddy_beverage_napkins"
+            "product": "red-heart-balloon"
           }
         },
         "product_GtTH7z": {
           "type": "product",
           "settings": {
-            "product": "le_golf_small_plates"
+            "product": "hot-dog-dachshund-mylar-balloon"
           }
         }
       },
@@ -167,11 +167,11 @@
         ".subheading {max-width: 500px; margin: 0.6em auto 3em; line-height: 1.5;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/IMG_8790_be91df00-6fb8-4b83-958f-fc55da24692c.jpg",
-        "heading": "<h1>Fore the Love of Golf</h1>",
-        "subheading": "<p>Tee-rific gifts and accessories for golf lovers—perfect for the course, the clubhouse, or the 17th Stadium Course hole.</p>",
-        "url": "shopify://collections/golf",
-        "button_text": "Shop Golf Now"
+        "image": "shopify://shop_images/IMG_0058.jpg",
+        "heading": "<h1>Make it Pop</h1>",
+        "subheading": "<p>Balloons that instantly turn any moment into a celebration. From birthdays and graduations to showers and just-because surprises, our balloon bouquets and custom designs add the perfect festive touch to any occasion.</p>",
+        "url": "https://thesocialsociety.com/pages/balloons",
+        "button_text": "Create Your Bundle"
       }
     },
     "collections_7dJhJC": {
@@ -180,25 +180,25 @@
         "collection_h6qtNj": {
           "type": "collection",
           "settings": {
-            "collection": "candles-1"
+            "collection": "st-patricks-day"
           }
         },
         "collection_nT9pcz": {
           "type": "collection",
           "settings": {
-            "collection": "lunar-new-year"
+            "collection": "beach-vibes"
           }
         },
         "collection_XjgcqD": {
           "type": "collection",
           "settings": {
-            "collection": "gifts"
+            "collection": "anniversary"
           }
         },
         "collection_cHzMAm": {
           "type": "collection",
           "settings": {
-            "collection": "easter"
+            "collection": "games"
           }
         },
         "collection_XpmTee": {
@@ -223,14 +223,14 @@
         "heading_BYdaNx": {
           "type": "heading",
           "settings": {
-            "heading": "sign up now for our In-store events!",
+            "heading": "we have the Best Events In Town!",
             "heading_size": "h1"
           }
         },
         "text_MjzkHG": {
           "type": "text",
           "settings": {
-            "text": "<p>Join the community at our Ponte Vedra Beach store in Nocatee Town Center. From themed mixology classes to expert-led craft sessions, there's something for everyone. Gather your friends (or make some new ones!) and let’s make memories together.</p>",
+            "text": "<p>Join the community at our Ponte Vedra Beach store in Nocatee Town Center. From themed Bingo Nights to expert-led craft sessions to DANCE PARTIES (!), there's something for everyone. Gather your friends (or make some new ones!) and let’s make memories together.</p>",
             "text_style": "body"
           }
         },
@@ -251,15 +251,15 @@
       ],
       "custom_css": [],
       "settings": {
-        "image": "shopify://shop_images/IMG_5398.jpg",
+        "image": "shopify://shop_images/388004633903096931.jpg",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-ae5b6179-5aa6-465f-b9f4-b4ca822ef228",
-        "color_scheme": "scheme-ae5b6179-5aa6-465f-b9f4-b4ca822ef228",
+        "section_color_scheme": "scheme-a8b5c022-f7c5-4cdc-b352-1cf9aa5363a6",
+        "color_scheme": "scheme-a8b5c022-f7c5-4cdc-b352-1cf9aa5363a6",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 0,
@@ -275,7 +275,7 @@
         "blog": "party-like-us",
         "post_limit": 2,
         "columns_desktop": 2,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-3",
         "show_image": true,
         "show_date": false,
         "show_author": false,
