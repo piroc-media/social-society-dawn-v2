@@ -19,7 +19,13 @@
     <div class="grid grid--1-col grid--2-col-tablet">
       <div class="grid__item contact-graphics">
         <div class="contact--sub-heading">{{ section.settings.subheading }}</div>
-        <img src="{{ section.settings.image | image_url: width: 500 }}">
+        <img
+          src="{{ section.settings.image | image_url: width: 500 }}"
+          alt="{{ section.settings.image.alt | escape }}"
+          loading="lazy"
+          width="500"
+          height="{{ 500 | divided_by: section.settings.image.aspect_ratio | round }}"
+        >
         <h1 class="contact--heading">{{ section.settings.heading }}</h1>
       </div>
       <div class="grid__item contact-form">

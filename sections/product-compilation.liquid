@@ -10,7 +10,13 @@
             <div class="grid__item">
               <a href="{{ block.settings.product.url }}" class="product">
                 <div class="media media--square">
-                  <img src="{{ block.settings.product.featured_media | image_url: width: 500 }}">
+                  <img
+                    src="{{ block.settings.product.featured_media | image_url: width: 500 }}"
+                    alt="{{ block.settings.product.featured_media.alt | default: block.settings.product.title | escape }}"
+                    loading="lazy"
+                    width="500"
+                    height="{{ 500 | divided_by: block.settings.product.featured_media.aspect_ratio | round }}"
+                  >
                 </div>
               </a>
             </div>
@@ -22,7 +28,13 @@
     </div>
 
     <div class="grid__item image">
-      <img src="{{ section.settings.image.src | image_url: width: 900 }}">
+      <img
+        src="{{ section.settings.image.src | image_url: width: 900 }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        loading="lazy"
+        width="900"
+        height="{{ 900 | divided_by: section.settings.image.aspect_ratio | round }}"
+      >
     </div>
   </div>
 </div>

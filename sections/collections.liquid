@@ -3,7 +3,13 @@
     {% for block in section.blocks %}
       <a href="{{ block.settings.collection.url }}" class="collection grid__item">
         <div class="media media--circle">
-          <img src="{{ block.settings.collection.featured_image | image_url: width: 500 }}">
+          <img
+            src="{{ block.settings.collection.featured_image | image_url: width: 500 }}"
+            alt="{{ block.settings.collection.featured_image.alt | default: block.settings.collection.title | escape }}"
+            loading="lazy"
+            width="500"
+            height="{{ 500 | divided_by: block.settings.collection.featured_image.aspect_ratio | round }}"
+          >
         </div>
 
         <div class="collection-title">{{ block.settings.collection.title }}</div>

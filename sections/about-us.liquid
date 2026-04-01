@@ -14,7 +14,13 @@
           
           <div class="image">
             <div class="media media--portrait">
-              <img src="{{ block.settings.left_image | image_url: width: 300 }}">
+              <img
+                src="{{ block.settings.left_image | image_url: width: 300 }}"
+                alt="{{ block.settings.left_image.alt | escape }}"
+                loading="lazy"
+                width="300"
+                height="{{ 300 | divided_by: block.settings.left_image.aspect_ratio | round }}"
+              >
             </div>
           </div>
 
@@ -95,7 +101,13 @@
           
           <div class="image">
             <div class="media media--portrait">
-              <img src="{{ block.settings.left_image | image_url: width: 300 }}">
+              <img
+                src="{{ block.settings.left_image | image_url: width: 300 }}"
+                alt="{{ block.settings.left_image.alt | escape }}"
+                loading="lazy"
+                width="300"
+                height="{{ 300 | divided_by: block.settings.left_image.aspect_ratio | round }}"
+              >
             </div>
           </div>
 

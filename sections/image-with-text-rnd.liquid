@@ -27,7 +27,13 @@
       </div>
 
       <div class="image grid__item">
-        <img src="{% if product.metafields.custom.teaser_image %}{{ product.metafields.custom.teaser_image | image_url: width: 500 }}{% else %}{{ section.settings.image.src | image_url: width: 500 }}{% endif %}">
+        <img
+          src="{% if product.metafields.custom.teaser_image %}{{ product.metafields.custom.teaser_image | image_url: width: 500 }}{% else %}{{ section.settings.image.src | image_url: width: 500 }}{% endif %}"
+          alt="{% if product.metafields.custom.teaser_image %}{{ product.metafields.custom.teaser_image.alt | escape }}{% else %}{{ section.settings.image.alt | escape }}{% endif %}"
+          loading="lazy"
+          width="500"
+          height="{% if product.metafields.custom.teaser_image %}{{ 500 | divided_by: product.metafields.custom.teaser_image.aspect_ratio | round }}{% else %}{{ 500 | divided_by: section.settings.image.aspect_ratio | round }}{% endif %}"
+        >
       </div>
     </div>
 

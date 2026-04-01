@@ -218,7 +218,7 @@
         {%- endform -%}
       </div>
       <div class="grid__item custom-form--image">
-        <img src="{{ section.settings.image | image_url: width: 900 }}">
+        <img src="{{ section.settings.image | image_url: width: 900 }}" alt="{{ section.settings.image.alt | escape }}" width="900" height="{{ 900 | divided_by: section.settings.image.aspect_ratio | round }}" loading="lazy">
       </div>
     </div>
   </div>

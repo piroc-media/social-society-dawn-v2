@@ -151,7 +151,7 @@
 {% assign file_type = property.last | split: '.' | last | downcase %}
 {% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
 {% if file_types contains file_type %}
-  <div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
+  <div class="bcpo-cart-file"><img src="{{ property.last }}" alt="{{ property.first | escape }}" width="50" height="50" loading="lazy" style="max-width: 50px; height: auto;"></div>
 {% else %}
   <span class="bcpo-cart-file">Uploaded file</span>
 {% endif %}
@@ -163,7 +163,7 @@
 	{% assign file_type = property.last | split: '.' | last | downcase %}
 	{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
 	{% if file_types contains file_type %}
-		<div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
+		<div class="bcpo-cart-file"><img src="{{ property.last }}" alt="{{ property.first | escape }}" width="50" height="50" loading="lazy" style="max-width: 50px; height: auto;"></div>
 	{% else %}
 		<span class="bcpo-cart-file">Uploaded file</span>
 	{% endif %}
@@ -173,7 +173,7 @@
 	{% assign file_type = property.last | split: '.' | last | downcase %}
 	{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
 	{% if file_types contains file_type %}
-		<div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
+		<div class="bcpo-cart-file"><img src="{{ property.last }}" alt="{{ property.first | escape }}" width="50" height="50" loading="lazy" style="max-width: 50px; height: auto;"></div>
 	{% else %}
 		<span class="bcpo-cart-file">Uploaded file</span>
 	{% endif %}
@@ -183,7 +183,7 @@
 	{% assign file_type = property.last | split: '.' | last | downcase %}
 	{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
 	{% if file_types contains file_type %}
-		<div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
+		<div class="bcpo-cart-file"><img src="{{ property.last }}" alt="{{ property.first | escape }}" width="50" height="50" loading="lazy" style="max-width: 50px; height: auto;"></div>
 	{% else %}
 		<span class="bcpo-cart-file">Uploaded file</span>
 	{% endif %}
@@ -193,7 +193,7 @@
 	{% assign file_type = property.last | split: '.' | last | downcase %}
 	{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
 	{% if file_types contains file_type %}
-		<div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
+		<div class="bcpo-cart-file"><img src="{{ property.last }}" alt="{{ property.first | escape }}" width="50" height="50" loading="lazy" style="max-width: 50px; height: auto;"></div>
 	{% else %}
 		<span class="bcpo-cart-file">Uploaded file</span>
 	{% endif %}
@@ -203,7 +203,7 @@
 	{% assign file_type = property.last | split: '.' | last | downcase %}
 	{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
 	{% if file_types contains file_type %}
-		<div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
+		<div class="bcpo-cart-file"><img src="{{ property.last }}" alt="{{ property.first | escape }}" width="50" height="50" loading="lazy" style="max-width: 50px; height: auto;"></div>
 	{% else %}
 		<span class="bcpo-cart-file">Uploaded file</span>
 	{% endif %}

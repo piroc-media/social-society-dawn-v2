@@ -1,14 +1,20 @@
 {{ 'section-sub-hero.css' | asset_url | stylesheet_tag }}
 <div
-  class="section-sub-hero color-{{ color }}"
-  style="background-color: var(--color-{{ color }});"
+  class="section-sub-hero color-{{ section.settings.color }}"
+  style="background-color: var(--color-{{ section.settings.color }});"
 >
   <div
     class="grid grid--gapless grid--1-col grid--2-col-tablet section-hero--color-scheme-{{ section.settings.color }}"
     style="background-color: var(--color-{{ section.settings.color }});"
   >
     <div class="image grid__item">
-      <img src="{{ section.settings.image | image_url: width: 700 }}">
+      <img
+        src="{{ section.settings.image | image_url: width: 700 }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        loading="lazy"
+        width="700"
+        height="{{ 700 | divided_by: section.settings.image.aspect_ratio | round }}"
+      >
     </div>
     <div class="text grid__item section-sub-hero--content">
       {%- if section.settings.title != blank -%}

@@ -90,14 +90,14 @@
                             {% endif %}
                           >
                             {%- if featuredLink.type == 'collection_link' -%}
-                              {% assign linkCollection = featuredLink.object %}
+                              {% assign link_collection = featuredLink.object %}
                               <div class="mega-menu--collection">
                                 <img
-                                  src="{{ linkCollection.featured_image | image_url: width: 280 }}"
+                                  src="{{ link_collection.featured_image | image_url: width: 280 }}"
                                   alt="{{ featuredLink.title | escape }}"
                                   loading="lazy"
                                   width="280"
-                                  height="{{ 280 | divided_by: linkCollection.featured_image.aspect_ratio | round }}"
+                                  height="{{ 280 | divided_by: link_collection.featured_image.aspect_ratio | round }}"
                                 >
 
                                 <div class="mega-menu--collection--title">

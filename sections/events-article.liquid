@@ -26,7 +26,12 @@
             {% if article.metafields.custom.event_price == 'SOLD OUT' %}
               <div class="sold-out-banner"><img src="https://cdn.shopify.com/s/files/1/0684/2875/9265/files/sold-out-banner-v2.png?v=1727713654" alt="sold out" width="342" height="125"></div>
             {% endif %}
-            <img src="{{ article.image | image_url: width: 900 }}">
+            <img
+              src="{{ article.image | image_url: width: 900 }}"
+              alt="{{ article.image.alt | default: article.title | escape }}"
+              width="900"
+              height="{{ 900 | divided_by: article.image.aspect_ratio | round }}"
+            >
           </div>
         </div>
         <div class="grid__item">
@@ -250,7 +255,7 @@
         class="page-width{% if section.settings.page_width_narrow %} page-width--narrow{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
       >
         {%- if article.comments_count > 0 -%}
-          {%- assign anchorId = '#Comments-' | append: article.id -%}
+          {%- assign anchor_id = '#Comments-' | append: article.id -%}
 
           <h2 id="Comments-{{ article.id }}" tabindex="-1">
             {{ 'blogs.article.comments' | t: count: article.comments_count }}
@@ -277,7 +282,7 @@
                   </footer>
                 </article>
               {%- endfor -%}
-              {% render 'pagination', paginate: paginate, anchor: anchorId %}
+              {% render 'pagination', paginate: paginate, anchor: anchor_id %}
             </div>
           {% endpaginate %}
         {%- endif -%}

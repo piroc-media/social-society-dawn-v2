@@ -14,7 +14,13 @@
                 class="landscape"
               {% endif %}
             >
-              <img src="{{ block.settings.left_image | image_url: width: 600 }}">
+              <img
+                src="{{ block.settings.left_image | image_url: width: 600 }}"
+                alt="{{ block.settings.left_image.alt | escape }}"
+                loading="lazy"
+                width="600"
+                height="{{ 600 | divided_by: block.settings.left_image.aspect_ratio | round }}"
+              >
             </div>
           </div>
 
@@ -101,7 +107,13 @@
                 class="landscape"
               {% endif %}
             >
-              <img src="{{ block.settings.left_image | image_url: width: 600 }}">
+              <img
+                src="{{ block.settings.left_image | image_url: width: 600 }}"
+                alt="{{ block.settings.left_image.alt | escape }}"
+                loading="lazy"
+                width="600"
+                height="{{ 600 | divided_by: block.settings.left_image.aspect_ratio | round }}"
+              >
             </div>
           </div>
 
