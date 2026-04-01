@@ -93,9 +93,11 @@
                               {% assign linkCollection = featuredLink.object %}
                               <div class="mega-menu--collection">
                                 <img
-                                  src="{{linkCollection.featured_image.src | product_img_url: '280x'}}"
-                                  alt="{{featuredLink.title}}"
+                                  src="{{ linkCollection.featured_image | image_url: width: 280 }}"
+                                  alt="{{ featuredLink.title | escape }}"
                                   loading="lazy"
+                                  width="280"
+                                  height="{{ 280 | divided_by: linkCollection.featured_image.aspect_ratio | round }}"
                                 >
 
                                 <div class="mega-menu--collection--title">
