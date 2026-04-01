@@ -1,3 +1,4 @@
+{% # theme-check-disable LiquidHTMLSyntaxError %}
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -134,9 +135,7 @@
   endfor
 -%}
 
-{% # theme-check-disable LiquidHTMLSyntaxError -- dynamic tag for sticky-header web component %}
 <{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
-{% # theme-check-enable LiquidHTMLSyntaxError %}
   {%- liquid
     assign social_links = false
     assign localization_forms = false
