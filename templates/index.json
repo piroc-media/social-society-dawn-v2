@@ -15,15 +15,15 @@
         "image_YjEcKn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_8316.jpg"
+            "image": "shopify://shop_images/IMG_8164.jpg"
           }
         },
         "content_wBFytM": {
           "type": "content",
           "settings": {
-            "subtitle": "<p>Hip to the Hop</p>",
-            "headline": "<p>Set the Scene for an Egg-cellent Easter </p>",
-            "description": "<p>Make your Easter table as fun as the celebration itself. From adorable plates, cups, and napkins to interactive color-in placemats that keep little hands busy, we have everything you need to create a festive and memorable gathering. Set the table, gather your people, and let the Easter fun begin<br/><a href=\"/collections/easter\" target=\"_blank\" title=\"Easter\">SHOP EASTER NOW</a></p>"
+            "subtitle": "<p>Let's Fiesta!</p>",
+            "headline": "<p>Spice up Your Cinco De Mayo</p>",
+            "description": "<p>Bring the fiesta to life with colorful partyware, festive décor, and everything you need to celebrate in style. Shop our Cinco de Mayo collection in-store or online and grab your favorites before they’re gone!<br/><a href=\"/collections/cinco-de-mayo\" target=\"_blank\" title=\"Cinco de Mayo\">SHOP CINCO DE MAYO NOW</a></p>"
           }
         }
       },
@@ -36,7 +36,7 @@
         ".section-hero .section-hero--content .titles {margin-top: 6.9vh;}"
       ],
       "settings": {
-        "color": "deep-blue"
+        "color": "green"
       }
     },
     "featured_collection": {
