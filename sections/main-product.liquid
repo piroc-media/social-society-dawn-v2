@@ -124,7 +124,7 @@
               <p style="float: none; text-align: left; clear: both; margin: 10px 0;">
                 <input style="float:none; vertical-align: middle;" type="checkbox" id="agree" />
                 <label style="display:inline; float:none" for="agree">
-                  I agree with the {{ block.settings.waiver_label | escape }}.
+                  I agree with the <a href="/pages/event-waiver" target="_blank">terms & conditions</a>.
                 </label>
               </p>
 
@@ -812,14 +812,7 @@
     {
       "type": "waiver",
       "name": "Waiver acceptance",
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "waiver_label",
-          "default": "terms & conditions",
-          "label": "Waiver label"
-        }
-      ]
+      "settings": []
     },
     {
       "type": "text",
