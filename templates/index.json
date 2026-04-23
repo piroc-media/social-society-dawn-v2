@@ -177,6 +177,12 @@
     "collections_7dJhJC": {
       "type": "collections",
       "blocks": {
+        "collection_XpmTee": {
+          "type": "collection",
+          "settings": {
+            "collection": "teacher-appreciation"
+          }
+        },
         "collection_h6qtNj": {
           "type": "collection",
           "settings": {
@@ -192,7 +198,7 @@
         "collection_XjgcqD": {
           "type": "collection",
           "settings": {
-            "collection": "anniversary"
+            "collection": "disco-groovy"
           }
         },
         "collection_cHzMAm": {
@@ -200,20 +206,14 @@
           "settings": {
             "collection": "games"
           }
-        },
-        "collection_XpmTee": {
-          "type": "collection",
-          "settings": {
-            "collection": "teacher-appreciation"
-          }
         }
       },
       "block_order": [
+        "collection_XpmTee",
         "collection_h6qtNj",
         "collection_nT9pcz",
         "collection_XjgcqD",
-        "collection_cHzMAm",
-        "collection_XpmTee"
+        "collection_cHzMAm"
       ],
       "settings": {}
     },
