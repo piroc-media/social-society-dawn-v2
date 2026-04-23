@@ -42,19 +42,19 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "CELEBRATING OUR GRADS!",
+        "title": "Talk Derby To Me",
         "heading_size": "h1",
         "description": "",
         "show_description": true,
         "description_style": "body",
-        "collection": "graduation-1",
+        "collection": "kentucky-derby",
         "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "scheme-fc47b201-e5ce-46eb-809b-164ec8c2d8d6",
+        "color_scheme": "scheme-2ebb493e-a3a2-4910-b4da-e3d9a19027e8",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -100,15 +100,15 @@
         "button_DtegBJ"
       ],
       "settings": {
-        "image": "shopify://shop_images/IMG_9289_43839d92-127e-4f35-92f0-b78d30f36c03.jpg",
+        "image": "shopify://shop_images/IMG_2664.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-e343538e-d2ea-442b-b8a4-884c1abfee7d",
-        "color_scheme": "scheme-e343538e-d2ea-442b-b8a4-884c1abfee7d",
+        "section_color_scheme": "scheme-3",
+        "color_scheme": "scheme-3",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 0,
@@ -167,9 +167,9 @@
         ".subheading {max-width: 500px; margin: 0.6em auto 3em; line-height: 1.5;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/IMG_0058.jpg",
-        "heading": "<h1>Make it Pop</h1>",
-        "subheading": "<p>Balloons that instantly turn any moment into a celebration. From birthdays and graduations to showers and just-because surprises, our balloon bouquets and custom designs add the perfect festive touch to any occasion.</p>",
+        "image": "shopify://shop_images/IMG_3304.jpg",
+        "heading": "<h1>Celebrate our Heroes</h1>",
+        "subheading": "<p>Say it with balloons 🎈<br/>From nurses to everyday heroes, brighten someone’s day with a thoughtful, feel-good surprise.<br/><strong>Shop </strong><a href=\"/collections/balloons\" target=\"_blank\" title=\"Balloons\"><strong>balloons</strong></a><strong> for every celebration and every “just because” moment.</strong></p>",
         "url": "https://thesocialsociety.com/pages/balloons",
         "button_text": "Create Your Bundle"
       }
