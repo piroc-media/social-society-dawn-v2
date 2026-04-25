@@ -177,6 +177,12 @@
     "collections_7dJhJC": {
       "type": "collections",
       "blocks": {
+        "collection_nT9pcz": {
+          "type": "collection",
+          "settings": {
+            "collection": "graduation-1"
+          }
+        },
         "collection_XpmTee": {
           "type": "collection",
           "settings": {
@@ -187,12 +193,6 @@
           "type": "collection",
           "settings": {
             "collection": "americana"
-          }
-        },
-        "collection_nT9pcz": {
-          "type": "collection",
-          "settings": {
-            "collection": "beach-vibes"
           }
         },
         "collection_XjgcqD": {
@@ -209,9 +209,9 @@
         }
       },
       "block_order": [
+        "collection_nT9pcz",
         "collection_XpmTee",
         "collection_h6qtNj",
-        "collection_nT9pcz",
         "collection_XjgcqD",
         "collection_cHzMAm"
       ],
