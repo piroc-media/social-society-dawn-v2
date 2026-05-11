@@ -121,37 +121,37 @@
         "product_Kk8jeW": {
           "type": "product",
           "settings": {
-            "product": "28_inch_smiley_nurse"
+            "product": "36_inch_champagne_bottle"
           }
         },
         "product_MFARKj": {
           "type": "product",
           "settings": {
-            "product": "16_inch_black_marblez_orbz"
+            "product": "16_inch_zebra_print_orbz"
           }
         },
         "product_3KKNGf": {
           "type": "product",
           "settings": {
-            "product": "17_inch_cube_get_well_feel_better"
+            "product": "36_inch_pink_ribbon"
           }
         },
         "product_PX6LyV": {
           "type": "product",
           "settings": {
-            "product": "30-yay-grad-cap-balloon"
+            "product": "16-congrats-grad-stripes-and-stars-orbz-balloon"
           }
         },
         "product_tPaRHa": {
           "type": "product",
           "settings": {
-            "product": "red-heart-balloon"
+            "product": "19-star-iridescent-silver"
           }
         },
         "product_GtTH7z": {
           "type": "product",
           "settings": {
-            "product": "hot-dog-dachshund-mylar-balloon"
+            "product": "17-happy-birthday-to-you-balloon"
           }
         }
       },
@@ -167,9 +167,9 @@
         ".subheading {max-width: 500px; margin: 0.6em auto 3em; line-height: 1.5;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/IMG_3304.jpg",
-        "heading": "<h1>Celebrate our Heroes</h1>",
-        "subheading": "<p>Say it with balloons 🎈<br/>From nurses to everyday heroes, brighten someone’s day with a thoughtful, feel-good surprise.<br/><strong>Shop </strong><a href=\"/collections/balloons\" target=\"_blank\" title=\"Balloons\"><strong>balloons</strong></a><strong> for every celebration and every “just because” moment.</strong></p>",
+        "image": "shopify://shop_images/IMG_0103_0a68cac2-8204-436b-b257-688d5f0c4dbd.jpg",
+        "heading": "<h1>Balloons for Every Occasion</h1>",
+        "subheading": "<p>Say it with balloons 🎈<br/>Celebrate life’s biggest moments with balloons for every occasion. From elegant installations to fun and festive bouquets, we offer custom balloon designs perfect for parties, events, business celebrations, and everyday milestones. Whatever you’re celebrating, we’ll help make it pop.<br/><strong>Shop </strong><a href=\"/collections/balloons\" target=\"_blank\" title=\"Balloons\"><strong>balloons</strong></a><strong> for every celebration and every “just because” moment.</strong></p>",
         "url": "https://thesocialsociety.com/pages/balloons",
         "button_text": "Create Your Bundle"
       }
