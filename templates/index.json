@@ -15,15 +15,15 @@
         "image_YjEcKn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_3158.jpg"
+            "image": "shopify://shop_images/IMG_5522.jpg"
           }
         },
         "content_wBFytM": {
           "type": "content",
           "settings": {
-            "subtitle": "<p>Make Mom's Day</p>",
-            "headline": "<p>With Gifts She'll Love</p>",
-            "description": "<p>This Mother’s Day, go beyond the expected. Discover meaningful gifts she’ll treasure and join us for special events created to celebrate, connect, and make memories. Whether you're shopping for her or bringing her along, we’ve made it easy to make her feel loved.</p><p><a href=\"/collections/mothers-day\" target=\"_blank\" title=\"Mother's Day\">Shop for Mom Now</a></p>"
+            "subtitle": "<p>Gather, Celebrate & Remember</p>",
+            "headline": "<p>Patriotic Party Supplies</p>",
+            "description": "<p>Honor the holiday weekend with beautiful Memorial Day party supplies that bring friends and family together. Discover festive décor, serving essentials, balloons, and entertaining must-haves curated to help you celebrate with heart and style.</p><p><a href=\"/collections/4th-of-july\" target=\"_blank\" title=\"Party in the USA\">Party in the USA</a></p>"
           }
         }
       },
@@ -36,25 +36,25 @@
         ".section-hero .section-hero--content .titles {margin-top: 6.9vh;}"
       ],
       "settings": {
-        "color": "pink"
+        "color": "blue"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Happy 250 America!",
+        "title": "Cue the Summer Vibes",
         "heading_size": "h1",
         "description": "",
         "show_description": true,
         "description_style": "body",
-        "collection": "americana",
+        "collection": "beach-vibes",
         "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "scheme-356e8cfa-ab1f-4b3d-9881-362ba91759a9",
+        "color_scheme": "scheme-fc47b201-e5ce-46eb-809b-164ec8c2d8d6",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
