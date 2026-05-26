@@ -15,15 +15,15 @@
         "image_YjEcKn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_5522.jpg"
+            "image": "shopify://shop_images/Screenshot_2026-05-26_at_10.01.18_AM.png"
           }
         },
         "content_wBFytM": {
           "type": "content",
           "settings": {
-            "subtitle": "<p>Gather, Celebrate & Remember</p>",
-            "headline": "<p>Patriotic Party Supplies</p>",
-            "description": "<p>Honor the holiday weekend with beautiful Memorial Day party supplies that bring friends and family together. Discover festive décor, serving essentials, balloons, and entertaining must-haves curated to help you celebrate with heart and style.</p><p><a href=\"/collections/4th-of-july\" target=\"_blank\" title=\"Party in the USA\">Party in the USA</a></p>"
+            "subtitle": "<p>Summer Vibes</p>",
+            "headline": "<p>BEACH DAYS ARE HERE</p>",
+            "description": "<p>From poolside lounging to sandy toes and sunset cruises, we designed the perfect trucker hats for every beach day adventure. Shop our in-house designed styles made for sunny days, messy buns, and summer memories. Grab your favorite before they’re gone!</p><p><a href=\"/collections/beach-vibes\" target=\"_blank\" title=\"Beach Vibes\">BEACH DAYS</a></p>"
           }
         }
       },
@@ -36,7 +36,7 @@
         ".section-hero .section-hero--content .titles {margin-top: 6.9vh;}"
       ],
       "settings": {
-        "color": "blue"
+        "color": "violet"
       }
     },
     "featured_collection": {
