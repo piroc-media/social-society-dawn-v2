@@ -15,15 +15,15 @@
         "image_YjEcKn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-05-26_at_10.01.18_AM.png"
+            "image": "shopify://shop_images/IMG_5995.jpg"
           }
         },
         "content_wBFytM": {
           "type": "content",
           "settings": {
-            "subtitle": "<p>Summer Vibes</p>",
-            "headline": "<p>BEACH DAYS ARE HERE</p>",
-            "description": "<p>From poolside lounging to sandy toes and sunset cruises, we designed the perfect trucker hats for every beach day adventure. Shop our in-house designed styles made for sunny days, messy buns, and summer memories. Grab your favorite before they’re gone!</p><p><a href=\"/collections/beach-vibes\" target=\"_blank\" title=\"Beach Vibes\">BEACH DAYS</a></p>"
+            "subtitle": "<p>Dads Deserve</p>",
+            "headline": "<p>THE BEST</p>",
+            "description": "<p>Whether he's hitting the course, perfecting his swing, or simply enjoying a day with family, we've curated Father's Day gifts he'll love. From golf-inspired finds and unique gifts to celebration essentials for honoring Dad, discover thoughtful ways to make his day extra special. Shop our Father's Day collection before it's gone!</p><p><a href=\"/collections/fathers-day\" target=\"_blank\" title=\"Father's Day\">TEE UP FOR FATHER'S DAY</a></p>"
           }
         }
       },
@@ -36,18 +36,18 @@
         ".section-hero .section-hero--content .titles {margin-top: 6.9vh;}"
       ],
       "settings": {
-        "color": "violet"
+        "color": "green"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "BEST DAD EVER",
+        "title": "Inspired by the Fairway",
         "heading_size": "h1",
         "description": "",
         "show_description": true,
         "description_style": "body",
-        "collection": "fathers-day",
+        "collection": "golf",
         "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
