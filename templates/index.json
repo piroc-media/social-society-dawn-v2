@@ -15,15 +15,15 @@
         "image_YjEcKn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_5995.jpg"
+            "image": "shopify://shop_images/IMG_0830.jpg"
           }
         },
         "content_wBFytM": {
           "type": "content",
           "settings": {
-            "subtitle": "<p>Dads Deserve</p>",
-            "headline": "<p>THE BEST</p>",
-            "description": "<p>Whether he's hitting the course, perfecting his swing, or simply enjoying a day with family, we've curated Father's Day gifts he'll love. From golf-inspired finds and unique gifts to celebration essentials for honoring Dad, discover thoughtful ways to make his day extra special. Shop our Father's Day collection before it's gone!</p><p><a href=\"/collections/fathers-day\" target=\"_blank\" title=\"Father's Day\">TEE UP FOR FATHER'S DAY</a></p>"
+            "subtitle": "<p>Happy Birthday</p>",
+            "headline": "<p>AMERICA!</p>",
+            "description": "<p>Celebrate America's 250th Birthday in style! Whether you're hosting a backyard BBQ, neighborhood block party, or festive family gathering, we have everything you need to make your Fourth of July celebration unforgettable. Shop patriotic plates, cups, and napkins perfect for serving your favorite holiday treats, plus sparklers and colorful confetti to add extra sparkle and fun to the festivities. <br/><a href=\"/collections/4th-of-july\" target=\"_blank\" title=\"Party in the USA\">SHOP FOR AMERICA'S BIRTHDAY NOW</a></p>"
           }
         }
       },
@@ -36,7 +36,7 @@
         ".section-hero .section-hero--content .titles {margin-top: 6.9vh;}"
       ],
       "settings": {
-        "color": "green"
+        "color": "blue"
       }
     },
     "featured_collection": {
