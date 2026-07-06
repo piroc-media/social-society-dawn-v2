@@ -15,15 +15,15 @@
         "image_YjEcKn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_0830.jpg"
+            "image": "shopify://shop_images/IMG_7120.jpg"
           }
         },
         "content_wBFytM": {
           "type": "content",
           "settings": {
-            "subtitle": "<p>Happy Birthday</p>",
-            "headline": "<p>AMERICA!</p>",
-            "description": "<p>Celebrate America's 250th Birthday in style! Whether you're hosting a backyard BBQ, neighborhood block party, or festive family gathering, we have everything you need to make your Fourth of July celebration unforgettable. Shop patriotic plates, cups, and napkins perfect for serving your favorite holiday treats, plus sparklers and colorful confetti to add extra sparkle and fun to the festivities. <br/><a href=\"/collections/4th-of-july\" target=\"_blank\" title=\"Party in the USA\">SHOP FOR AMERICA'S BIRTHDAY NOW</a></p>"
+            "subtitle": "<p>The Heat is on...</p>",
+            "headline": "<p>Let's eat Outside!</p>",
+            "description": "<p>From backyard barbecues and pool parties to beach days and al fresco dinners, we've curated everything you need to celebrate in style. Shop our collection of colorful plates, cups, napkins, serving pieces, and entertaining essentials that make hosting easy, festive, and completely effortless.<br/><a href=\"/collections/outdoor-entertaining\" target=\"_blank\" title=\"Outdoor Entertaining\">SHOP OUTDOOR ENTERTAINING NOW</a></p>"
           }
         }
       },
@@ -36,7 +36,7 @@
         ".section-hero .section-hero--content .titles {margin-top: 6.9vh;}"
       ],
       "settings": {
-        "color": "blue"
+        "color": "green"
       }
     },
     "featured_collection": {
