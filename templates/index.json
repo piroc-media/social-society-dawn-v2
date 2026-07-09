@@ -15,15 +15,15 @@
         "image_YjEcKn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_7120.jpg"
+            "image": "shopify://shop_images/IMG_2513.jpg"
           }
         },
         "content_wBFytM": {
           "type": "content",
           "settings": {
-            "subtitle": "<p>The Heat is on...</p>",
-            "headline": "<p>Let's eat Outside!</p>",
-            "description": "<p>From backyard barbecues and pool parties to beach days and al fresco dinners, we've curated everything you need to celebrate in style. Shop our collection of colorful plates, cups, napkins, serving pieces, and entertaining essentials that make hosting easy, festive, and completely effortless.<br/><a href=\"/collections/outdoor-entertaining\" target=\"_blank\" title=\"Outdoor Entertaining\">SHOP OUTDOOR ENTERTAINING NOW</a></p>"
+            "subtitle": "<p>Love is in the Air</p>",
+            "headline": "<p>Celebrate Love</p>",
+            "description": "<p>From bridal showers and engagement parties to bachelorette weekends and wedding day celebrations, we've curated everything you need to celebrate the happy couple. Shop elegant plates, cups, napkins, decorations, favors, balloons, and thoughtful details that make every wedding event unforgettable.<br/><a href=\"/collections/going-to-the-chapel\" target=\"_blank\" title=\"For the Bride\">SHOP BRIDAL</a></p>"
           }
         }
       },
@@ -36,7 +36,7 @@
         ".section-hero .section-hero--content .titles {margin-top: 6.9vh;}"
       ],
       "settings": {
-        "color": "green"
+        "color": "pink"
       }
     },
     "featured_collection": {
