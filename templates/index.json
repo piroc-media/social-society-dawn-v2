@@ -15,15 +15,15 @@
         "image_YjEcKn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_5018.jpg"
+            "image": "shopify://shop_images/Screenshot_2026-08-17_at_7.40.55_AM.png"
           }
         },
         "content_wBFytM": {
           "type": "content",
           "settings": {
-            "subtitle": "<p>Back To School</p>",
-            "headline": "<p>Celebrate the School Year in Style</p>",
-            "description": "<p>From apple-inspired balloon bouquets and jumbo ABC letter balloons to the cutest back-to-school party supplies, we have everything you need to celebrate the first day of school. Our plates, cups, napkins, and decorations are almost sold out so shop now before they're gone!<br/><a href=\"/collections/back-to-school\" target=\"_blank\" title=\"Back to School\">SHOP BACK TO SCHOOL</a></p>"
+            "subtitle": "<p>Soak Up the Last</p>",
+            "headline": "<p>Days of Summer!</p>",
+            "description": "<p>Beach days, backyard hangs & one more long weekend in the sun. Stock up on the fun stuff from must-have hats and beach-day accessories to party supplies that make celebrating easy.<br/><a href=\"/collections/beach-vibes\" target=\"_blank\" title=\"Beach Vibes\">SHOP BECAH DAYS HERE</a></p>"
           }
         }
       },
@@ -36,7 +36,7 @@
         ".section-hero .section-hero--content .titles {margin-top: 6.9vh;}"
       ],
       "settings": {
-        "color": "red"
+        "color": "teal"
       }
     },
     "featured_collection": {
@@ -47,14 +47,14 @@
         "description": "",
         "show_description": true,
         "description_style": "body",
-        "collection": "americana",
+        "collection": "4th-of-july",
         "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "scheme-36c0b6f9-97c4-4191-9452-d9f968c66272",
+        "color_scheme": "scheme-356e8cfa-ab1f-4b3d-9881-362ba91759a9",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
