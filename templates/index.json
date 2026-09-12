@@ -107,8 +107,8 @@
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-fc47b201-e5ce-46eb-809b-164ec8c2d8d6",
-        "color_scheme": "scheme-fc47b201-e5ce-46eb-809b-164ec8c2d8d6",
+        "section_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 0,
@@ -118,6 +118,12 @@
     "product_compilation_9BKDzm": {
       "type": "product-compilation",
       "blocks": {
+        "product_3KKNGf": {
+          "type": "product",
+          "settings": {
+            "product": "21-nfl-jacksonville-jaguars-football-helmet-balloon-black-gold"
+          }
+        },
         "product_Kk8jeW": {
           "type": "product",
           "settings": {
@@ -128,12 +134,6 @@
           "type": "product",
           "settings": {
             "product": "16-black-silver-gold-birthday-orbz"
-          }
-        },
-        "product_3KKNGf": {
-          "type": "product",
-          "settings": {
-            "product": "21-nfl-jacksonville-jaguars-football-helmet-balloon-black-gold"
           }
         },
         "product_PX6LyV": {
@@ -156,9 +156,9 @@
         }
       },
       "block_order": [
+        "product_3KKNGf",
         "product_Kk8jeW",
         "product_MFARKj",
-        "product_3KKNGf",
         "product_PX6LyV",
         "product_tPaRHa",
         "product_GtTH7z"
@@ -180,13 +180,19 @@
         "collection_nT9pcz": {
           "type": "collection",
           "settings": {
-            "collection": "teacher-appreciation"
+            "collection": "thanksgiving"
           }
         },
         "collection_XpmTee": {
           "type": "collection",
           "settings": {
-            "collection": "going-to-the-chapel"
+            "collection": "hanukkah"
+          }
+        },
+        "collection_XjgcqD": {
+          "type": "collection",
+          "settings": {
+            "collection": "christmas"
           }
         },
         "collection_h6qtNj": {
@@ -195,24 +201,18 @@
             "collection": "baby"
           }
         },
-        "collection_XjgcqD": {
-          "type": "collection",
-          "settings": {
-            "collection": "americana"
-          }
-        },
         "collection_cHzMAm": {
           "type": "collection",
           "settings": {
-            "collection": "disco-groovy"
+            "collection": "birthday"
           }
         }
       },
       "block_order": [
         "collection_nT9pcz",
         "collection_XpmTee",
-        "collection_h6qtNj",
         "collection_XjgcqD",
+        "collection_h6qtNj",
         "collection_cHzMAm"
       ],
       "settings": {}
