@@ -25,13 +25,13 @@
           "type": "section",
           "settings": {
             "left_background": "#f5420d",
-            "left_text_color": "#ffbfe1",
+            "left_text_color": "#141417",
             "left_headline": "BALLOON BAR SERVICES",
             "left_image": "shopify://shop_images/IMG_5560.jpg",
             "left_image_aspect": "landscape",
             "left_subtitle": "Customizable For Every Occasion",
             "right_background": "#ffbfe1",
-            "right_text_color": "#f5420d",
+            "right_text_color": "#2e159b",
             "right_icon": "cup",
             "right_content": "<p><strong>HELIUM BUNDLES, GARLANDS, AND MORE</strong><br/><br/>Whether you're celebrating a birthday, a graduation, an engagement, or a retirement, we can create a beautiful collection of custom balloons for your special occasion. Work with our team of trained event specialists to customize your order in store, online, or over the phone.</p><p><a href=\"/pages/balloons\" title=\"Balloons\">LEARN MORE HERE</a></p>"
           }
