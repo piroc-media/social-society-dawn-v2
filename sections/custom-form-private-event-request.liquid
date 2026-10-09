@@ -61,7 +61,7 @@
 
   <header>
     <div class="contact--sub-heading">{{ section.settings.subheading }}</div>
-    <h1 class="contact--heading">{{ section.settings.heading }}</h1>
+    {% if section.settings.heading != blank %}<h1 class="contact--heading">{{ section.settings.heading }}</h1>{% endif %}
   </header>
   
   <div class="contact custom-balloons page-width section-{{ section.id }}-padding">
@@ -73,7 +73,8 @@
             assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
           endif
         -%}
-        {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+        {%- assign form_id = 'ContactForm-' | append: section.id -%}
+        {%- form 'contact', id: form_id, class: contact_form_class -%}
           {%- if form.posted_successfully? -%}
             <p class="picaresk form-status form-status-list form__message" tabindex="-1" autofocus style="font-size: 125%; box-shadow: none; border: 0">
               {{ 'templates.contact.form.post_success' | t }}
@@ -87,7 +88,7 @@
             </div>
             <ul class="form-status-list caption-large" role="list">
               <li>
-                <a href="#ContactForm-email" class="link">
+                <a href="#ContactForm-email-{{ section.id }}" class="link">
                   {{ form.errors.translated_fields.email | capitalize }}
                   {{ form.errors.messages.email }}
                 </a>
@@ -95,25 +96,26 @@
             </ul>
           {%- endif -%}
           <div class="custom_form_fields">
+            <p class="caption form__required-note"><span aria-hidden="true">*</span> Required field</p>
             <div class="field">
               <input
                 class="field__input"
                 autocomplete="name"
                 type="text"
-                id="ContactForm-name"
+                id="ContactForm-name-{{ section.id }}"
                 name="contact[{{ 'templates.contact.form.name' | t }}]"
                 value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
                 placeholder="{{ 'templates.contact.form.name' | t }}"
                 aria-required="true"
                 required="required"
               >
-              <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+              <label class="field__label" for="ContactForm-name-{{ section.id }}">{{ 'templates.contact.form.name' | t }}</label>
             </div>
             <div class="field field--with-error">
               <input
                 autocomplete="email"
                 type="email"
-                id="ContactForm-email"
+                id="ContactForm-email-{{ section.id }}"
                 class="field__input"
                 name="contact[email]"
                 spellcheck="false"
@@ -122,17 +124,17 @@
                 aria-required="true"
                 {% if form.errors contains 'email' %}
                   aria-invalid="true"
-                  aria-describedby="ContactForm-email-error"
+                  aria-describedby="ContactForm-email-error-{{ section.id }}"
                 {% endif %}
                 placeholder="{{ 'templates.contact.form.email' | t }}"
                 required="required"
               >
-              <label class="field__label" for="ContactForm-email">
+              <label class="field__label" for="ContactForm-email-{{ section.id }}">
                 {{- 'templates.contact.form.email' | t }}
                 <span aria-hidden="true">*</span></label
               >
               {%- if form.errors contains 'email' -%}
-                <small class="contact__field-error" id="ContactForm-email-error">
+                <small class="contact__field-error" id="ContactForm-email-error-{{ section.id }}">
                   <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
                   <span class="form__message">
                     {%- render 'icon-error' -%}
@@ -145,7 +147,7 @@
           <div class="field">
             <input
               type="tel"
-              id="ContactForm-phone"
+              id="ContactForm-phone-{{ section.id }}"
               class="field__input"
               autocomplete="tel"
               name="contact[{{ 'templates.contact.form.phone' | t }}]"
@@ -153,42 +155,42 @@
               value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
               placeholder="{{ 'templates.contact.form.phone' | t }}"
             >
-            <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+            <label class="field__label" for="ContactForm-phone-{{ section.id }}">{{ 'templates.contact.form.phone' | t }}</label>
           </div>
 
             <div class="form-grid">
               <div class="field">
                 <input
                   type="text"
-                  id="ContactForm-date"
+                  id="ContactForm-date-{{ section.id }}"
                   class="field__input"
                   name="contact[Date]"
                   placeholder="Date of Event"
                 >
-                <label class="field__label" for="ContactForm-date">Date of Event</label>
+                <label class="field__label" for="ContactForm-date-{{ section.id }}">Date of Event</label>
               </div>
             <div class="field">
               <input
                 class="field__input"
                 type="text"
-                id="ContactForm-number"
+                id="ContactForm-number-{{ section.id }}"
                 name="contact[numberOfPeople]"
                 value="{% if form.number %}{{ form.number }}{% elsif customer %}{{ customer.number }}{% endif %}"
                 placeholder="Number of attendees"
                 aria-required="true"
                 required="required"
               >
-              <label class="field__label" for="ContactForm-number">Number of attendees (Minimum 12, Maximum 18)</label>
+              <label class="field__label" for="ContactForm-number-{{ section.id }}">Number of attendees (Minimum 12, Maximum 18)</label>
             </div>
               <div class="field">
                 <input
                   type="text"
-                  id="ContactForm-teme"
+                  id="ContactForm-scheme-{{ section.id }}"
                   class="field__input"
                   name="contact[Scheme]"
                   placeholder="What is the theme of your event?"
                 >
-                <label class="field__label" for="ContactForm-scheme">What is the theme of your event?</label>
+                <label class="field__label" for="ContactForm-scheme-{{ section.id }}">What is the theme of your event?</label>
               </div>
           </div>
 
@@ -196,14 +198,14 @@
           <div class="field">
             <textarea
               rows="9"
-              id="ContactForm-body"
+              id="ContactForm-body-{{ section.id }}"
               class="text-area field__input"
               name="contact[{{ 'templates.contact.form.comment' | t }}]"
               placeholder="{{ 'templates.contact.form.comment' | t }}"
             >
               {{- form.body -}}
             </textarea>
-            <label class="form__label field__label" for="ContactForm-body">
+            <label class="form__label field__label" for="ContactForm-body-{{ section.id }}">
               Additional Details
             </label>
           </div>

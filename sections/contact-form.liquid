@@ -146,12 +146,12 @@
         <div class="grid grid--1-col grid--3-col-tablet">
           <div class="grid__item">
             <h2 class="address--heading">
-              {{ section.settings.address_heading }}
+              {{ section.settings.address_heading | replace: '<p>', '' | replace: '</p>', '' }}
             </h2>
           </div>
 
           <div class="grid__item address--image">
-            <svg width="240" height="367" viewBox="0 0 240 367" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="240" height="367" viewBox="0 0 240 367" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <path d="M189.86 51.3738C189.86 19.8109 168.753 0 142.43 0C116.107 0 95 19.8109 95 51.3738C95 80.5459 121.207 114.756 138.401 119.77L134.64 127.297C137.294 127.774 139.892 128.037 142.436 128.061C145.108 128.086 147.707 127.854 150.232 127.297L146.716 119.697C163.916 114.426 189.866 80.4053 189.866 51.3738" fill="#c81127"/>
               <line x1="142" y1="120" x2="142" y2="340" stroke="#c81127" stroke-width="4"/>
               <line x1="56.332" y1="292" x2="56.332" y2="340" stroke="#c81127" stroke-width="4"/>
