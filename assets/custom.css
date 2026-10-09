@@ -443,15 +443,18 @@ footer {
     opacity: 1;
 
     .newsletter {
-      bottom: 0;
+      transform: translate(-50%, 0);
     }
   }
 
+  /* The slide-up is animated with transform (compositor-only) instead of `bottom`.
+     Animating `bottom` on this 1050px panel produced a CLS of 0.79 on the home page
+     (every frame of the 1s slide was recorded as a layout shift). Same visual effect. */
   .newsletter {
     position: fixed;
-    bottom: -1050px;
+    bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -462,7 +465,7 @@ footer {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><path d="M 0 1 Z C 0.093 0.843 0.24 0.699 0.499 0.696 C 0.785 0.697 0.906 0.842 1 1" fill="rgb(255, 191, 225)"/></svg>');
     background-size: contain;
     background-repeat: no-repeat;
-    transition: 1s bottom;
+    transition: 1s transform;
     overflow: visible;
 
     .newsletter-preheader {
@@ -552,6 +555,13 @@ footer {
         outline-offset: 3px;
       }
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newsletter-overlay,
+  .newsletter-overlay .newsletter {
+    transition: none;
   }
 }
 
