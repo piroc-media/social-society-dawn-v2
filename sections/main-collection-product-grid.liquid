@@ -208,7 +208,8 @@
                 </li>
 
                 {% if forloop.index == interjection_pos %}
-                  <div
+                  {% comment %} WCAG 1.3.1: must be an <li> — a <div> is not valid inside the product <ul> {% endcomment %}
+                  <li
                     class="collection-interjection {% if interjection_text_first %}collection-interjection--reverse{% endif %} color-{{ interjection_color_scheme }}"
                     style="background-color: var(--color-{{ interjection_color_scheme }});"
                   >
@@ -223,17 +224,17 @@
                         {% endif %}
                       >
                         {%- if interjection_preheading != blank -%}
-                          <div class="preheading">{{ interjection_preheading }}</div>
+                          <p class="preheading">{{ interjection_preheading | replace: '<p>', '' | replace: '</p>', '' }}</p>
                         {%- endif -%}
                         {%- if interjection_heading != blank -%}
-                          <div class="heading">{{ interjection_heading }}</div>
+                          <h2 class="heading">{{ interjection_heading | replace: '<p>', '' | replace: '</p>', '' }}</h2>
                         {%- endif -%}
                         {%- if interjection_icon != blank -%}
                           <img class="icon" src="{{ interjection_icon | image_url: width: 100 }}" alt="{{ interjection_icon.alt | escape }}" width="100" height="{{ 100 | divided_by: interjection_icon.aspect_ratio | round }}" loading="lazy">
                         {%- endif -%}
                       </div>
                     </div>
-                  </div>
+                  </li>
                 {% endif %}
               {%- endfor -%}
             </ul>

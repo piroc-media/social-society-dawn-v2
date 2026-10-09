@@ -94,7 +94,8 @@
                               <div class="mega-menu--collection">
                                 <img
                                   src="{{ link_collection.featured_image | image_url: width: 280 }}"
-                                  alt="{{ featuredLink.title | escape }}"
+                                  alt=""
+                                  {% comment %} decorative: the link text below already names the destination (WCAG 1.1.1) {% endcomment %}
                                   loading="lazy"
                                   width="280"
                                   height="{{ 280 | divided_by: link_collection.featured_image.aspect_ratio | round }}"
@@ -115,7 +116,7 @@
                                 >
                                   <img
                                     src="{{ thumb | image_url:width: 240, height: 240 }}"
-                                    alt="{{featuredLink.title}} _ {{ page_handle }}"
+                                    alt=""
                                     width="240"
                                     height="240"
                                     loading="lazy"

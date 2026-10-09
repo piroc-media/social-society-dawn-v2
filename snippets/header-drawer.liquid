@@ -26,7 +26,7 @@
             <div class="field">
               <input
                 class="search__input field__input"
-                id="Search-In-Template"
+                id="Search-In-Drawer"
                 type="search"
                 name="q"
                 value="{{ search.terms | escape }}"
@@ -44,7 +44,7 @@
                   spellcheck="false"
                 {%- endif -%}
               >
-              <label class="field__label" for="Search-In-Template">{{ 'general.search.search' | t }}</label>
+              <label class="field__label" for="Search-In-Drawer">{{ 'general.search.search' | t }}</label>
               <input name="options[prefix]" type="hidden" value="last">
 
               {%- if settings.predictive_search_enabled -%}

@@ -15,7 +15,18 @@
 <script src="{{ 'main-search.js' | asset_url }}" defer="defer"></script>
 
 <style>
-  .product-count-vertical, .product-count { display: none; }
+  /* Visually hidden, not display:none: these are role="status" regions that announce the
+     result count after filtering/sorting (WCAG 4.1.3). */
+  .product-count-vertical, .product-count {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+  }
   
   .template-search__header {
     margin-bottom: 3rem;

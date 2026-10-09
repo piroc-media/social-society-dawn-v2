@@ -609,7 +609,10 @@ if (!customElements.get('quick-order-list')) {
 
         this.variantItemStatusElement.setAttribute('aria-hidden', true);
 
-        const cartStatus = document.getElementById('quick-order-list-live-region-text');
+        const cartStatus =
+          document.getElementById(`quick-order-list-live-region-text-${this.dataset.productId}`) ||
+          document.getElementById('quick-order-list-live-region-text');
+        if (!cartStatus) return;
         cartStatus.setAttribute('aria-hidden', false);
 
         setTimeout(() => {

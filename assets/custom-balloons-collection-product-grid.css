@@ -14,4 +14,6 @@ ul.custom-balloons-collection-product-grid li {
     font-size: 1.69em;
 }
 */
-.card-information .button { color: #FFF;}
+/* Quick-add buttons in the product grid are violet (custom.css); white on violet is 2.2:1,
+   so inherit the dark text colour set there instead (WCAG 1.4.3). */
+.card-information .button { color: var(--color-dark); }

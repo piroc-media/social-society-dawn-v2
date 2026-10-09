@@ -115,7 +115,7 @@
               clip: true
             %}
 
-            <a href="{{ product.url }}" class="button">SHOP NOW</a>
+            <a href="{{ product.url }}" class="button">SHOP NOW<span class="visually-hidden">: {{ product.title | escape }}</span></a>
           </li>
         {%- else -%}
           {%- for i in (1..section.settings.columns_desktop) -%}
