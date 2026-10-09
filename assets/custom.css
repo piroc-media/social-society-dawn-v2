@@ -282,8 +282,7 @@ body.overflow-hidden {
         font-weight: bold;
       }
 
-      &:hover,
-      &.hover-active {
+      &:hover {
         background-color: var(--bg-color);
       }
     }
@@ -1483,15 +1482,7 @@ svg.clips {
         display: block;
       }
 
-      .contact__fields input:focus + label.field__label,
-      .contact-form input[type="text"]:focus + label.field__label,
-      .contact-form input[type="tel"]:focus + label.field__label,
-      .contact-form input[type="date"]:focus + label.field__label,
-      .contact-form textarea:focus + label.field__label,
-      .custom-form input[type="text"]:focus + label.field__label,
-      .custom-form input[type="tel"]:focus + label.field__label,
-      .custom-form input[type="date"]:focus + label.field__label,
-      .custom-form textarea:focus + label.field__label {
+      .contact__fields input:focus + label.field__label {
         font-size: 1.1rem;
         top: 0.39em;
       }
@@ -1545,10 +1536,6 @@ svg.clips {
   .custom-balloons {
     .grid {
       vertical-align: top;
-
-      .contact-form {
-        padding-top: 6px;
-      }
     }
   }
 }
@@ -2242,58 +2229,6 @@ svg.clips {
   }
 }
 
-@media (max-width: 749px) {
-  .section-about-us:not(.section-about-us-static) {
-    .grid {
-      .about-us--left {
-        display: none;
-      }
-
-      .left-block {
-        position: relative;
-        height: auto;
-      }
-
-      .grid__item.about-us--right {
-        .right-block {
-          height: auto;
-          padding: 50px 9vw;
-        }
-
-        .left-block {
-          display: flex;
-        }
-      }
-    }
-  }
-}
-
-.section-about-us:not(.section-about-us-static) .grid .left-block .image {
-  max-width: 400px;
-}
-
-@media (max-height: 959px) {
-
-  .section-about-us:not(.section-about-us-static) .grid .left-block .image {
-    max-width: 360px;
-  }
-
-}
-
-@media (max-height: 750px) {
-
-  .section-about-us:not(.section-about-us-static) .grid .left-block .image {
-    max-width: 300px;
-  }
-
-}
-
-@media (max-height: 600px) {
-  .section-about-us:not(.section-about-us-static) .grid .left-block .image {
-    max-width: 260px;
-  }
-}
-
 /* Responsive */
 
 .page-width-full {
@@ -2351,4 +2286,22 @@ wrapped-extension [feature="message"] [part="container"] {
 
 td.cart-item__totals .price--end {
   display: block !important;
+}
+
+/* Events: sold-out banner overlay (was an inline <style> per article card) */
+.sold-out-banner {
+  position: absolute;
+  display: flex !important;
+  width: 100% !important;
+  height: 100% !important;
+  left: 0 !important;
+  top: 0 !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 999 !important;
+}
+
+.article-card__image .sold-out-banner > img {
+  max-width: 260px;
+  height: auto;
 }

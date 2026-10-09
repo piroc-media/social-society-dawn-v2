@@ -3,14 +3,12 @@
     {% for block in section.blocks %}
       <a href="{{ block.settings.collection.url }}" class="collection grid__item">
         <div class="media media--circle">
-          <img
-            src="{{ block.settings.collection.featured_image | image_url: width: 500 }}"
-            alt=""
-            {% comment %} decorative: the collection title below is inside the same link (WCAG 1.1.1) {% endcomment %}
-            loading="lazy"
-            width="500"
-            height="{{ 500 | divided_by: block.settings.collection.featured_image.aspect_ratio | round }}"
-          >
+          {% comment %} alt="" — decorative: the collection title below is inside the same link (WCAG 1.1.1) {% endcomment %}
+          {{
+            block.settings.collection.featured_image
+            | image_url: width: 540
+            | image_tag: widths: '180, 360, 540', sizes: '180px', loading: 'lazy', alt: ''
+          }}
         </div>
 
         <div class="collection-title">{{ block.settings.collection.title }}</div>

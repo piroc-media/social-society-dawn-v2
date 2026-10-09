@@ -215,7 +215,17 @@
                   >
                     <div class="grid grid--gapless grid--1-col grid--2-col-tablet">
                       <div class="image grid__item">
-                        <img src="{{ interjection_image | image_url: width: 700 }}" alt="{{ interjection_image.alt | escape }}" width="700" height="{{ 700 | divided_by: interjection_image.aspect_ratio | round }}" loading="lazy">
+                        {%- if interjection_image != blank -%}
+                          {{
+                            interjection_image
+                            | image_url: width: 1400
+                            | image_tag:
+                              widths: '375, 550, 750, 1100, 1400',
+                              sizes: '(min-width: 750px) 50vw, 100vw',
+                              loading: 'lazy',
+                              alt: interjection_image.alt
+                          }}
+                        {%- endif -%}
                       </div>
                       <div
                         class="text grid__item"

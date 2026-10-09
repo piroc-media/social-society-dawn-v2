@@ -23,10 +23,16 @@
 
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
-
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
-{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  Performance: component-price.css is already loaded by every section that renders cards
+  (and by the cart drawer on every page); the bulk quick-order stylesheets are only needed
+  by the quick_add == 'bulk' branch. Emitting them per card produced 120 <link> tags on a
+  collection page.
+{%- endcomment -%}
+{%- if quick_add == 'bulk' -%}
+  {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
+  {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 
 {%- if card_product and card_product != empty -%}
   {%- liquid

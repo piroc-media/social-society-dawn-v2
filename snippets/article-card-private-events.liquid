@@ -21,22 +21,7 @@
   this at least affects the READ MORE link since the main blog links out to the external littlemisspartyplanner.com squarespace blog
 {% endcomment %}
 
-<style>
-  .sold-out-banner {
-    position: absolute;
-    display: flex!important;
-    width: 100%!important;
-    height: 100%!important;
-    left: 0!important;
-    top: 0!important;
-    justify-content: center!important;
-    align-items: center!important;
-    z-index: 999 !important;
-  }
-  .sold-out-banner > img {
-    max-width: 260px;height: auto;
-  }
-</style>
+{%- comment -%} .sold-out-banner styles live in assets/custom.css (Events) — was an inline <style> per card {%- endcomment -%}
 
 {%- if article and article != empty -%}
   {%- liquid
@@ -67,7 +52,7 @@
           <div class="article-card__image-wrapper card__media">
 
             {% if article.metafields.custom.event_price == 'SOLD OUT' %}
-              <div class="sold-out-banner"><img src="https://cdn.shopify.com/s/files/1/0684/2875/9265/files/sold-out-banner_v2.png?v=1727713909" alt="sold out" width="342" height="125"></div>
+              <div class="sold-out-banner"><img src="{{ 'sold-out-banner_v2.png' | file_img_url: '684x' }}" alt="sold out" width="342" height="125" loading="lazy"></div>
             {% endif %}
 
             <div

@@ -14,13 +14,17 @@
                 class="landscape"
               {% endif %}
             >
-              <img
-                src="{{ block.settings.left_image | image_url: width: 600 }}"
-                alt="{{ block.settings.left_image.alt | escape }}"
-                loading="lazy"
-                width="600"
-                height="{{ 600 | divided_by: block.settings.left_image.aspect_ratio | round }}"
-              >
+              {%- if block.settings.left_image != blank -%}
+                {{
+                  block.settings.left_image
+                  | image_url: width: 960
+                  | image_tag:
+                    widths: '390, 480, 600, 780, 960',
+                    sizes: '(min-width: 750px) 480px, 100vw',
+                    loading: 'lazy',
+                    alt: block.settings.left_image.alt
+                }}
+              {%- endif -%}
             </div>
           </div>
 
@@ -115,13 +119,17 @@
                 class="landscape"
               {% endif %}
             >
-              <img
-                src="{{ block.settings.left_image | image_url: width: 600 }}"
-                alt="{{ block.settings.left_image.alt | escape }}"
-                loading="lazy"
-                width="600"
-                height="{{ 600 | divided_by: block.settings.left_image.aspect_ratio | round }}"
-              >
+              {%- if block.settings.left_image != blank -%}
+                {{
+                  block.settings.left_image
+                  | image_url: width: 960
+                  | image_tag:
+                    widths: '390, 480, 600, 780, 960',
+                    sizes: '(min-width: 750px) 480px, 100vw',
+                    loading: 'lazy',
+                    alt: block.settings.left_image.alt
+                }}
+              {%- endif -%}
             </div>
           </div>
 

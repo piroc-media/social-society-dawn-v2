@@ -1,0 +1,50 @@
+/* Shared styles for the custom contact-form sections (grab-and-go garlands, helium bundles,
+   bursts, private event request / RSVP). Was an identical inline <style> in each section. */
+.custom-form h2 {
+  font-size: calc(var(--font-heading-scale) * 1.8rem);
+  color: #000;
+  margin: 1.3em 0 0;
+}
+
+.custom-form p {
+  font-family: 'Figtree', sans-serif;
+  color: #000;
+  line-height: 1.3;
+  margin-top: 0.5em;
+}
+
+.custom-form .field__label {
+  color: #000;
+}
+
+.custom-form .field__input:not(:placeholder-shown) {
+  padding-top: 0.69em;
+}
+
+.custom-form .field__input,
+.customer .field input {
+  color: #000;
+  background: #FFF;
+  box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) #000;
+}
+
+.custom-form .field label.select:after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 2.3em;
+  top: 6px;
+  width: 11px;
+  height: 11px;
+  border-top: 2px solid #333;
+  border-right: 2px solid #333;
+  transform: rotate(135deg);
+  z-index: 999;
+  left: auto;
+}
+
+@media (min-width: 750px) {
+  .custom-form--image {
+    padding: 0 0 0 3em;
+  }
+}

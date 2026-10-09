@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-    document.documentElement.classList.add('safari_only');
-  }
-
   // Decorative clip-path morph on featured-collection cards. Mirrored on keyboard focus,
   // skipped for prefers-reduced-motion, and null-safe for cards rendered without a clip.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -36,78 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
-
-  if (document.querySelector('.about-us--left.parallaxScroll')) {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.set('.about-us--left .left-block:not(:first-child)', { autoAlpha: 0 });
-    ScrollTrigger.matchMedia({
-      "(min-width: 750px)": function () {
-        ScrollTrigger.create({
-          trigger: ".section-about-us",
-          start: function () {
-            const viewportWidth = window.innerWidth;
-            if (viewportWidth >= 990)
-              return "top 126px";
-            else
-              return "top 54px";
-          },
-          end: "bottom top",
-          pin: ".about-us--left.parallaxScroll",
-        });
-        var leftBlocks = document.querySelectorAll('.about-us--left.parallaxScroll .left-block');
-        gsap.utils.toArray(".about-us--right .right-block").forEach((block, index) => {
-          ScrollTrigger.create({
-            trigger: block,
-            start: function () {
-              const viewportWidth = window.innerWidth;
-              if (viewportWidth >= 990)
-                return "top 126px";
-              else
-                return "top 54px";
-            },
-            end: "bottom 0px",
-            pin: block.querySelector('.block-inner'),
-            onEnter: () => {
-              if (index != 0)
-                gsap.fromTo(leftBlocks[index], { autoAlpha: 0 }, { duration: 0.3, autoAlpha: 1 });
-            },
-            onEnterBack: () => {
-              gsap.fromTo(leftBlocks[index], { autoAlpha: 0 }, { duration: 0.3, autoAlpha: 1 });
-            },
-            onLeave: () => {
-              if (index != 0)
-                gsap.fromTo(leftBlocks[index], { autoAlpha: 1 }, { duration: 0.3, autoAlpha: 0 });
-            },
-            onLeaveBack: () => {
-              if (index != 0)
-                gsap.fromTo(leftBlocks[index], { autoAlpha: 1 }, { duration: 0.3, autoAlpha: 0 });
-            }
-          });
-        });
-      }
-    });
-  }
-
-  const sectionHeader = document.querySelector('.section-header');
-  let previousClassList = sectionHeader.className;
-  // Set up the MutationObserver
-  const observer = new MutationObserver(
-    function (mutationsList) {
-      for (let mutation of mutationsList) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          const currentClassList = sectionHeader.className;
-          if (previousClassList !== currentClassList) {
-            if (typeof ScrollTrigger != 'undefined') {
-              setTimeout(function () {
-                ScrollTrigger.refresh();
-              }, 400);
-            }
-            previousClassList = currentClassList; // Update the previous class list
-          }
-        }
-      }
-    });
-  observer.observe(sectionHeader, { attributes: true, attributeFilter: ['class'] });
 
   initNewsletterPopup();
 
