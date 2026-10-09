@@ -16,8 +16,8 @@
       Shopify font CDN preconnect and the Dawn font-setting preloads were pointing at files
       that are never used. Preload the two fonts painted above the fold instead.
     {%- endcomment -%}
-    <link rel="preload" as="font" href="{{ 'Figtree-Regular.woff2' | asset_url }}" type="font/woff2" crossorigin>
-    <link rel="preload" as="font" href="{{ 'ABCROMCompressed-Heavy.woff2' | asset_url }}" type="font/woff2" crossorigin>
+    {{ 'Figtree-Regular.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {{ 'ABCROMCompressed-Heavy.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
 
     <title>
       {{ page_title }}
