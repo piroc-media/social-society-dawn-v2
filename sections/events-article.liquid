@@ -503,6 +503,88 @@
   }
 </script>
 
+{%- comment -%}
+  SEO: Event structured data for in-store events (Google "Events" rich results).
+  Only output when a start date/time exists (required by schema.org). Fields come from
+  the article metafields already used by the hero above.
+{%- endcomment -%}
+{%- if events_blog and article.metafields.custom.event_date_time != blank -%}
+  {%- liquid
+    assign event_start = article.metafields.custom.event_date_time | date: '%Y-%m-%dT%H:%M:%S%:z'
+    assign event_end = article.metafields.custom.event_date_time_to | date: '%Y-%m-%dT%H:%M:%S%:z'
+    assign price_raw = article.metafields.custom.event_price | strip | upcase
+    assign event_sold_out = false
+    if price_raw == 'SOLD OUT'
+      assign event_sold_out = true
+    endif
+    assign event_price = ''
+    if price_raw == 'FREE' or price_raw contains 'FREE'
+      assign event_price = '0'
+    elsif price_raw != blank and event_sold_out == false
+      assign event_price = price_raw | remove: '$' | remove: ',' | split: ' ' | first
+    endif
+    assign event_url = request.origin | append: article.url
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": {{ article.title | json }},
+      "url": {{ event_url | json }},
+      "startDate": {{ event_start | json }},
+      {% if article.metafields.custom.event_date_time_to != blank %}
+        "endDate": {{ event_end | json }},
+      {% endif %}
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      {% if article.image %}
+        "image": [{{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}],
+      {% endif %}
+      {% if article.excerpt != blank %}
+        "description": {{ article.excerpt | strip_html | json }},
+      {% else %}
+        "description": {{ article.content | strip_html | truncate: 300 | json }},
+      {% endif %}
+      "location": {
+        "@type": "Place",
+        "name": {{ article.metafields.custom.event_location | default: shop.name | json }},
+        {% if shop.address.address1 != blank %}
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": {{ shop.address.address1 | append: ' ' | append: shop.address.address2 | strip | json }},
+            "addressLocality": {{ shop.address.city | json }},
+            "addressRegion": {{ shop.address.province_code | json }},
+            "postalCode": {{ shop.address.zip | json }},
+            "addressCountry": {{ shop.address.country | json }}
+          }
+        {% else %}
+          "address": {{ article.metafields.custom.event_location | default: shop.name | json }}
+        {% endif %}
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }},
+        "url": {{ request.origin | json }}
+      },
+      {% if event_price != blank or event_sold_out %}
+        "offers": {
+          "@type": "Offer",
+          "url": {{ event_url | json }},
+          {% if event_price != blank %}
+            "price": {{ event_price | json }},
+            "priceCurrency": {{ shop.currency | json }},
+          {% endif %}
+          "availability": {% if event_sold_out %}"https://schema.org/SoldOut"{% else %}"https://schema.org/InStock"{% endif %}
+        },
+      {% endif %}
+      "performer": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }}
+      }
+    }
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "Events article",

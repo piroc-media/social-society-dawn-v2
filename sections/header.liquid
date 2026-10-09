@@ -348,26 +348,64 @@
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
 
+{%- liquid
+  comment
+    SEO: Organization -> LocalBusiness/Store. The shop is a physical store, so expose
+    address, phone, hours and geo for local search. Empty social links are dropped
+    (the previous array contained "" entries, which is invalid sameAs data).
+  endcomment
+  assign same_as = ''
+  assign social_links = settings.social_facebook_link | append: '|' | append: settings.social_instagram_link | append: '|' | append: settings.social_pinterest_link | append: '|' | append: settings.social_twitter_link | append: '|' | append: settings.social_tiktok_link | append: '|' | append: settings.social_youtube_link | append: '|' | append: settings.social_tumblr_link | append: '|' | append: settings.social_snapchat_link | append: '|' | append: settings.social_vimeo_link
+  assign social_links = social_links | split: '|'
+  for link in social_links
+    if link != blank
+      assign same_as = same_as | append: link | append: '|'
+    endif
+  endfor
+  assign same_as = same_as | split: '|'
+  assign hours_lines = section.settings.seo_opening_hours | newline_to_br | split: '<br />'
+-%}
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
-    "@type": "Organization",
+    "@type": {{ section.settings.seo_business_type | default: 'Store' | json }},
+    "@id": {{ request.origin | append: '/#store' | json }},
     "name": {{ shop.name | json }},
+    "url": {{ request.origin | json }},
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+      "image": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
-    "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
-    ],
-    "url": {{ request.origin | append: page.url | json }}
+    {% if shop.phone != blank %}
+      "telephone": {{ shop.phone | json }},
+    {% endif %}
+    {% if shop.email != blank %}
+      "email": {{ shop.email | json }},
+    {% endif %}
+    {% if section.settings.seo_price_range != blank %}
+      "priceRange": {{ section.settings.seo_price_range | json }},
+    {% endif %}
+    {% if shop.address.address1 != blank %}
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": {{ shop.address.address1 | append: ' ' | append: shop.address.address2 | strip | json }},
+        "addressLocality": {{ shop.address.city | json }},
+        "addressRegion": {{ shop.address.province_code | json }},
+        "postalCode": {{ shop.address.zip | json }},
+        "addressCountry": {{ shop.address.country | json }}
+      },
+    {% endif %}
+    {% if section.settings.seo_latitude != blank and section.settings.seo_longitude != blank %}
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": {{ section.settings.seo_latitude | json }},
+        "longitude": {{ section.settings.seo_longitude | json }}
+      },
+    {% endif %}
+    {% if section.settings.seo_opening_hours != blank %}
+      "openingHours": {{ hours_lines | json }},
+    {% endif %}
+    "sameAs": {{ same_as | json }}
   }
 </script>
 
@@ -393,6 +431,44 @@
   "name": "t:sections.header.name",
   "class": "section-header",
   "settings": [
+    {
+      "type": "header",
+      "content": "Local business (SEO structured data)"
+    },
+    {
+      "type": "select",
+      "id": "seo_business_type",
+      "label": "Business type",
+      "default": "Store",
+      "options": [
+        { "value": "Store", "label": "Store" },
+        { "value": "LocalBusiness", "label": "Local business" },
+        { "value": "Organization", "label": "Organization (no physical store)" }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "seo_opening_hours",
+      "label": "Opening hours",
+      "info": "One line per range in schema.org format, e.g. \"Tu-Fr 11:00-18:00\". Address and phone come from Settings > Store details.",
+      "default": "Tu-Fr 11:00-18:00\nSa 10:00-17:00"
+    },
+    {
+      "type": "text",
+      "id": "seo_price_range",
+      "label": "Price range",
+      "default": "$$"
+    },
+    {
+      "type": "text",
+      "id": "seo_latitude",
+      "label": "Latitude (optional)"
+    },
+    {
+      "type": "text",
+      "id": "seo_longitude",
+      "label": "Longitude (optional)"
+    },
     {
       "type": "select",
       "id": "logo_position",

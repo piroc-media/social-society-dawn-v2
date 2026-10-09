@@ -6,7 +6,7 @@
           class="left-block left-block-static"
           style="background-color: {{ block.settings.left_background }}; color: {{ block.settings.left_text_color }}"
         >
-          <h2 class="headline">{{ block.settings.left_headline }}</h2>
+          {%- if forloop.first and section.index == 1 -%}<h1 class="headline">{{ block.settings.left_headline }}</h1>{%- else -%}<h2 class="headline">{{ block.settings.left_headline }}</h2>{%- endif -%}
 
           <div class="image">
             <div

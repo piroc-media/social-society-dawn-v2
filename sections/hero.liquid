@@ -23,7 +23,7 @@
             endcomment
             assign heading_tag = section.settings.heading_tag | default: 'auto'
             if heading_tag == 'auto'
-              if section.index == 1
+              if section.index == 1 and request.page_type != 'index'
                 assign heading_tag = 'h1'
               else
                 assign heading_tag = 'h2'

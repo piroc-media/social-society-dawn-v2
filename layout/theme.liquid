@@ -21,14 +21,48 @@
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
-<!-- page.handle: {{ page.handle }} -->
-    
-    {% if page.handle contains 'terms-of-service' %}
-    <meta name=’robots’ content=’noindex’>
+    {%- liquid
+      comment
+        SEO: noindex the duplicate /pages/terms-of-service (the canonical copy lives at
+        /policies/terms-of-service), internal search results and the 404 page. The
+        previous tag used typographic quotes (’) and was never parsed by crawlers.
+      endcomment
+      assign noindex = false
+      if page.handle contains 'terms-of-service' or request.page_type == 'search' or request.page_type == '404'
+        assign noindex = true
+      endif
+
+      comment
+        SEO: meta description fallback chain. page_description is only set when an SEO
+        description was typed in the admin; otherwise fall back to the resource's own
+        content (trimmed), then the shop description.
+      endcomment
+      assign meta_description = page_description
+      if meta_description == blank
+        if request.page_type == 'product'
+          assign meta_description = product.description
+        elsif request.page_type == 'collection'
+          assign meta_description = collection.description
+        elsif request.page_type == 'article'
+          assign meta_description = article.excerpt_or_content
+        elsif request.page_type == 'blog'
+          assign meta_description = blog.title | append: ' from ' | append: shop.name | append: '. ' | append: shop.description
+        elsif request.page_type == 'page'
+          assign meta_description = page.content
+        endif
+        assign meta_description = meta_description | strip_html | strip_newlines | strip | truncate: 155
+      endif
+      if meta_description == blank
+        assign meta_description = shop.description
+      endif
+    -%}
+
+    {% if noindex %}
+      <meta name="robots" content="noindex, follow">
     {% endif %}
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% if meta_description != blank %}
+      <meta name="description" content="{{ meta_description | escape }}">
     {% endif %}
 
     {% render 'meta-tags' %}
