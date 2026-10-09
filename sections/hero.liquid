@@ -7,7 +7,7 @@
             src="{{ block.settings.image.src | image_url: width: 1440 }}"
             width="{{ block.settings.image.width }}"
             height="{{ block.settings.image.height }}"
-            alt="{{ block.settings.image.alt }}"
+            alt="{{ block.settings.image.alt | escape }}"
           >
         </div>
 
@@ -16,9 +16,24 @@
           class="grid__item section-hero--content section-hero--color-scheme-{{ section.settings.color }}"
           style="background-color: var(--color-{{ section.settings.color }});"
         >
+          {%- liquid
+            comment
+              Heading level: the first section on a page gets an <h1> so every page has one
+              (WCAG 1.3.1 / 2.4.6); merchants can override via the "Headline tag" setting.
+            endcomment
+            assign heading_tag = section.settings.heading_tag | default: 'auto'
+            if heading_tag == 'auto'
+              if section.index == 1
+                assign heading_tag = 'h1'
+              else
+                assign heading_tag = 'h2'
+              endif
+            endif
+            assign headline_text = block.settings.headline | replace: '<p>', '' | replace: '</p>', ''
+          -%}
           <div class="titles">
             {% if block.settings.subtitle != blank %}<div class="subtitle">{{ block.settings.subtitle }}</div>{% endif %}
-            <h2 class="headline">{{ block.settings.headline }}</h2>
+            <{{ heading_tag }} class="headline">{{ headline_text }}</{{ heading_tag }}>
           </div>
           {% if block.settings.description != blank %}
             <div class="description">{{ block.settings.description }}</div>
@@ -71,6 +86,18 @@
           "value": "teal",
           "label": "Teal"
         }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Headline tag",
+      "info": "Accessibility: every page needs exactly one H1. 'Auto' uses H1 when this is the first section on the page.",
+      "default": "auto",
+      "options": [
+        { "value": "auto", "label": "Auto" },
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" }
       ]
     }
   ],

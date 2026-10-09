@@ -10,7 +10,7 @@
           style="background-color: {{ block.settings.left_background }}; color: {{ block.settings.left_text_color }}"
         >
           
-          <div class="headline">{{ block.settings.left_headline }}</div>
+          <h2 class="headline">{{ block.settings.left_headline }}</h2>
           
           <div class="image">
             <div class="media media--portrait">
@@ -24,7 +24,7 @@
             </div>
           </div>
 
-          <div class="subheadline">{{ block.settings.left_subtitle }}</div>
+          <p class="subheadline">{{ block.settings.left_subtitle }}</p>
 
         </div>
       {% endfor %}
@@ -39,6 +39,8 @@
           <div class="block-inner">
             <div class="icons">
               <svg
+                aria-hidden="true"
+                focusable="false"
                 {% if block.settings.right_icon == 'cup' %}
                   class="icon-active"
                 {% endif %}
@@ -51,6 +53,8 @@
                 <path d="M19.7216 44.37V20.1907L35.4835 0H0L15.7643 20.1883V44.3676C15.7643 44.3676 7.43349 45.0267 7.43349 47.4324C7.43349 49.8381 10.9867 50.9976 17.7442 50.9976C24.5016 50.9976 28.0548 49.8381 28.0548 47.4324C28.0548 45.0267 19.724 44.3676 19.724 44.3676" fill="black"/>
               </svg>
               <svg
+                aria-hidden="true"
+                focusable="false"
                 {% if block.settings.right_icon == 'palm' %}
                   class="icon-active"
                 {% endif %}
@@ -63,6 +67,8 @@
                 <path d="M44.4066 2.07366C31.412 -3.22008 24.9816 2.93526 22.2434 7.2603C19.61 3.01558 13.2234 -3.31501 0 2.07366L15.7157 7.63026C11.2544 7.37226 5.35945 9.38267 0.739906 19.3033L13.8659 13.4911C10.9599 16.3485 8.83994 21.3818 10.6435 30.2583L20.0408 13.7491L18.7143 51.0024H25.9211L24.9548 14.7884L33.7607 30.2583C35.5618 21.3891 33.4467 16.3534 30.5455 13.496L43.6642 19.3057C39.2248 9.77209 33.6049 7.54264 29.2117 7.61322L44.4041 2.07609L44.4066 2.07366Z" fill="black"/>
               </svg>
               <svg
+                aria-hidden="true"
+                focusable="false"
                 {% if block.settings.right_icon == 'bow' %}
                   class="icon-active"
                 {% endif %}
@@ -75,6 +81,8 @@
                 <path d="M42.4097 0C34.629 2.14006 28.2522 6.93709 25.0384 9.7124H19.964C16.7478 6.93709 10.371 2.14006 2.59035 0C2.59035 0 -3.23793 10.9781 2.59035 24.6518C2.59035 24.6518 10.6199 21.1132 14.851 18.9224L3.54239 34.7651L11.6251 51.1296L22.2958 22.2992L32.9665 51.2069L41.0492 34.8424L30.4631 18.9224C34.9527 21.3233 42.4121 24.6518 42.4121 24.6518C48.2403 10.9805 42.4121 0 42.4121 0" fill="black"/>
               </svg>
               <svg
+                aria-hidden="true"
+                focusable="false"
                 {% if block.settings.right_icon == 'hat' %}
                   class="icon-active"
                 {% endif %}
@@ -97,7 +105,7 @@
           style="background-color: {{ block.settings.left_background }}; color: {{ block.settings.left_text_color }}"
         >
           
-          <div class="headline">{{ block.settings.left_headline }}</div>
+          <h2 class="headline">{{ block.settings.left_headline }}</h2>
           
           <div class="image">
             <div class="media media--portrait">
@@ -111,7 +119,7 @@
             </div>
           </div>
 
-          <div class="subheadline">{{ block.settings.left_subtitle }}</div>
+          <p class="subheadline">{{ block.settings.left_subtitle }}</p>
 
         </div>
       {% endfor %}

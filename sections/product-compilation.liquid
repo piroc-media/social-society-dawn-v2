@@ -1,7 +1,7 @@
 <div class="page-width page-width-full">
   <div class="grid grid--gapless grid--1-col grid--2-col-tablet">
     <div class="grid__item content">
-      <div class="heading">{{ section.settings.heading }}</div>
+      <div class="heading">{{ section.settings.heading }}</div>{% comment %} richtext: merchants may type the page <h1> here {% endcomment %}
       <div class="subheading">{{ section.settings.subheading }}</div>
 
       <div class="products">
@@ -12,7 +12,8 @@
                 <div class="media media--square">
                   <img
                     src="{{ block.settings.product.featured_media | image_url: width: 500 }}"
-                    alt="{{ block.settings.product.featured_media.alt | default: block.settings.product.title | escape }}"
+                    alt="{{ block.settings.product.title | escape }}"
+                    {% comment %} image-only link: the product name is the link's accessible name (WCAG 2.4.4) {% endcomment %}
                     loading="lazy"
                     width="500"
                     height="{{ 500 | divided_by: block.settings.product.featured_media.aspect_ratio | round }}"

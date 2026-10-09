@@ -13,7 +13,7 @@
     <div class="grid grid--gapless grid--1-col grid--2-col-tablet">
       <div class="text grid__item">
         {% if product.metafields.custom.teaser_heading or product.metafields.custom.teaser_content %}
-          <div class="teaser-heading">{{ product.metafields.custom.teaser_heading | metafield_tag }}</div>
+          <h2 class="teaser-heading">{{ product.metafields.custom.teaser_heading | metafield_tag }}</h2>
           <div class="teaser-content">{{ product.metafields.custom.teaser_content | metafield_tag }}</div>
         {% else %}
           {% for block in section.blocks %}
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <svg width="95" height="40" viewBox="0 0 95 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="95" height="40" viewBox="0 0 95 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <path d="M82.4274 8.58467C83.7257 7.89661 84.6235 6.52631 84.6235 4.92956C84.6235 2.64766 82.8137 0.79834 80.5807 0.79834C78.3476 0.79834 76.5378 2.64766 76.5378 4.92956C76.5378 6.52051 77.4271 7.8821 78.7141 8.57305L67.9492 35.59C67.9492 35.59 73.2365 37.599 80.5664 37.6513C84.382 37.6803 88.7488 37.1781 93.2149 35.59L82.4274 8.58467Z" fill="#2E159B"/>
       <path d="M15.7192 33.4245V16.4177L26.5693 2.21826H2.14453L12.9946 16.4177V33.4245C12.9946 33.4245 7.25847 33.889 7.25847 35.5816C7.25847 37.2742 9.70464 38.0899 14.3555 38.0899C19.0063 38.0899 21.4525 37.2742 21.4525 35.5816C21.4525 33.889 15.7164 33.4245 15.7164 33.4245H15.7192Z" fill="#2E159B"/>
       <path d="M60.8809 16.5161C60.8809 7.44655 54.9458 1.75342 47.542 1.75342C40.1381 1.75342 34.2031 7.44655 34.2031 16.5161C34.2031 24.9005 41.5729 34.7306 46.4084 36.1735L45.3515 38.3364C46.0987 38.4728 46.8289 38.5483 47.5448 38.5541C48.2949 38.5628 49.0279 38.4931 49.7381 38.3364L48.7494 36.1532C53.585 34.6377 60.8837 24.8627 60.8837 16.519L60.8809 16.5161Z" fill="#2E159B"/>

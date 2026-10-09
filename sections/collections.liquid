@@ -5,7 +5,8 @@
         <div class="media media--circle">
           <img
             src="{{ block.settings.collection.featured_image | image_url: width: 500 }}"
-            alt="{{ block.settings.collection.featured_image.alt | default: block.settings.collection.title | escape }}"
+            alt=""
+            {% comment %} decorative: the collection title below is inside the same link (WCAG 1.1.1) {% endcomment %}
             loading="lazy"
             width="500"
             height="{{ 500 | divided_by: block.settings.collection.featured_image.aspect_ratio | round }}"
