@@ -164,7 +164,7 @@
               <a
                 href="{{ article.metafields.custom.external_blog_link_to_lmp }}"
                 class="read-more party-like-us-read-more-lnk"
-                >READ MORE</a
+                >READ MORE<span class="visually-hidden">: {{ article.title | escape }} (littlemisspartyplanner.com)</span></a
               >
             {% else %}
               <a href="{{ article.url }}" class="read-more">READ MORE<span class="visually-hidden">: {{ article.title | escape }}</span></a>
