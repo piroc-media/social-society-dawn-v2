@@ -26,8 +26,8 @@ Mobile layouts were audited from code only; the browser automation used for the 
 | Severity | Found | Fixed in code on this branch | Needs theme-editor change | Needs content / merchant decision |
 |---|---|---|---|---|
 | Critical | 6 | 6 | 0 | 0 |
-| Serious | 24 | 20 | 4 (colour schemes) | 0 |
-| Moderate | 22 | 15 | 2 | 5 |
+| Serious | 24 | 24 | 0 | 0 |
+| Moderate | 22 | 16 | 0 | 5 |
 | Minor | 14 | 8 | 0 | 6 |
 
 The site's stock Dawn foundations are sound: skip link, landmarks, `lang`, mega menu (details/summary with `aria-expanded`, Enter/Escape, visible focus), drawers, sliders, header icon target sizes and the facet UI all pass. Nearly every failure comes from the custom layer (custom sections, custom forms, `custom.css`, `custom.js`).
@@ -66,11 +66,11 @@ Status key: **Fixed** = corrected in code on `ada-wcag-2.2`. **Editor** = must b
 | S6 | 2.4.11 | Always-sticky header | No `scroll-padding-top`; Shift+Tab targets scroll under the header. | Fixed — `html { scroll-padding-top: var(--header-height) }`. |
 | S7 | 1.4.3 | Add-to-cart and every quick-add button | White 12 px text on violet `#BFA3DE` = **2.2:1**. Verified live on collection and product pages. | Fixed — dark `#141417` text (8.3:1). |
 | S8 | 1.4.3 | Hero / sub-hero colour schemes (`custom.css`) | pink/orange 2.4:1 (live on Balloons page), blue/red 3.3:1 (fails body copy), red/pink 3.9:1 (fails body copy), orange scheme text same colour as background, forced white `<strong>` 1.3–2.2:1 on light schemes. | Fixed — see commit for the new pairs (all ≥ 4.5:1 for body text). Design review recommended: the pink hero now uses deep blue (same pair as the existing pink theme scheme). |
-| S9 | 1.4.3 | Theme colour scheme **scheme-5** (pink bg / orange text) | 2.43:1. Used by the home image-with-text section and collection banner blocks. Verified live on home. | **Editor** — change text/button to `#2e159b` (8.1:1) or `#141417` (12.1:1). |
-| S10 | 1.4.3 | Theme colour scheme **fc47b201** (orange bg / pink text) | 2.43:1. Home "Let's Get Spooky" featured collection. Verified live. | **Editor** — text `#141417` (5.5:1) or `#ffffff` (3.7:1, headings only). |
-| S11 | 1.4.3 | Theme colour scheme **baf667b2** (cream bg / violet text) | 2.12:1. Collection interjection + random image-with-text block on every product template. | **Editor** — text `#141417` (17.6:1) or `#2e159b` (11.9:1). |
-| S12 | 1.4.3 | Theme colour schemes **36c0b6f9** (blue / red) and **356e8cfa** (red / blue) | 3.25:1 — passes only for ≥ 24 px text; fails the 16 px body copy in rich-text, newsletter and image-with-text-rnd sections. | **Editor** — use `#2e159b` on blue (7.3:1) and `#ffffff` on red (5.9:1). |
-| S13 | 1.4.3 | About Us / Celebrate With Us static blocks (block colour settings) | pink/orange 2.43:1 on two blocks. Verified live on About Us. | **Editor** — set those blocks' text colour to `#141417` or `#2e159b`. |
+| S9 | 1.4.3 | Theme colour scheme **scheme-5** (pink bg / orange text) | 2.43:1. Used by the home image-with-text section and collection banner blocks. Verified live on home. | Fixed (approved reshuffle) — text/button deep blue `#2e159b` (8.1:1). |
+| S10 | 1.4.3 | Theme colour scheme **fc47b201** (orange bg / pink text) | 2.43:1. Home "Let's Get Spooky" featured collection. Verified live. | Fixed (approved reshuffle) — text/button dark `#141417` (5.5:1). |
+| S11 | 1.4.3 | Theme colour scheme **baf667b2** (cream bg / violet text) | 2.12:1. Collection interjection + random image-with-text block on every product template. | Fixed (approved reshuffle) — text deep blue `#2e159b` (11.9:1). |
+| S12 | 1.4.3 | Theme colour schemes **36c0b6f9** (blue / red) and **356e8cfa** (red / blue) | 3.25:1 — passes only for ≥ 24 px text; fails the 16 px body copy in rich-text, newsletter and image-with-text-rnd sections. | Fixed (approved reshuffle) — deep blue on blue (7.3:1), white on red (5.9:1). |
+| S13 | 1.4.3 | About Us / Celebrate With Us static blocks (block colour settings) | pink/orange 2.43:1 on two blocks. Verified live on About Us. | Fixed (approved reshuffle) — dark on orange, deep blue on pink. |
 | S14 | 1.4.3 | Contact page address block | red on pink at 13 px = 3.9:1. Verified live. | Fixed — deep blue (8.1:1). |
 | S15 | 1.4.3 | Product card "red" badge | pink on red at 16 px = 3.9:1. | Fixed — white (5.9:1). |
 | S16 | 1.4.3 | Collection interjection orange scheme | pink on orange 2.4:1. | Fixed — dark (5.5:1). |
@@ -99,7 +99,7 @@ Status key: **Fixed** = corrected in code on `ada-wcag-2.2`. **Editor** = must b
 | M10 | 1.4.1 | Random-colour section links | Same colour as text, no underline. | Fixed — underlined. |
 | M11 | 2.4.4 | External links forced to `target=_blank` by `custom.js` | No new-window notice. | Fixed — `aria-describedby="a11y-new-window-message"`. |
 | M12 | 1.3.1, 4.1.2 | Drawer search input id | Duplicated the search page's input id. | Fixed. |
-| M13 | 3.2.4, 1.4.3 | `main-collection-banner.liquid`, `image-with-text-rnd.liquid` | A **random** colour scheme is picked on every page load; with the failing schemes above, contrast failures appear intermittently. | **Editor** (fix the schemes, S9–S12). Recommendation: pick the scheme deterministically. **Open** as a design decision. |
+| M13 | 3.2.4, 1.4.3 | `main-collection-banner.liquid`, `image-with-text-rnd.liquid` | A **random** colour scheme is picked on every page load; with the failing schemes above, contrast failures appear intermittently. | Schemes fixed (S9–S12), so no failing scheme can be picked. Deterministic selection remains **Open** as a design decision. |
 | M14 | 3.3.2 | Custom forms date/time fields | Free-text date with no format hint. | **Open** — recommend `type="date"` + `type="time"`, or a hint via `aria-describedby`; left as is because it changes what the merchant receives by email. |
 | M15 | 1.3.1 | Custom forms `<select>` floating label | Label precedes the select so Dawn's float rules never fire; may overlap chosen value. | **Open** — needs a visual check once deployed. |
 | M16 | 1.4.10 | Blog "empty" state, 100 px blog titles | Fixed 600 px width; no mobile size for 100 px uppercase titles. | **Open** — needs a 320 px visual check once deployed. |
@@ -131,11 +131,11 @@ Status key: **Fixed** = corrected in code on `ada-wcag-2.2`. **Editor** = must b
 
 ---
 
-## 4. Theme-editor actions (cannot be done in code)
+## 4. Colour scheme changes (applied on the branch, 2026-10-09)
 
-Colour schemes are stored in `config/settings_data.json`, which the theme editor overwrites, so these are changed in **Online Store → Themes → Customize → Theme settings → Colors**. Suggested values keep the brand backgrounds and change only the text/button colour:
+Approved as a reshuffle of existing brand colours. Applied directly to `config/settings_data.json` and the two page templates on `ada-wcag-2.2`, so they deploy with the branch. If the theme editor is later used on a different theme copy, re-apply these values under **Theme settings → Colors**:
 
-| Scheme (editor label order may differ) | Background | Current text | Ratio | Suggested text | Ratio |
+| Scheme | Background | Previous text | Ratio | New text | Ratio |
 |---|---|---|---|---|---|
 | scheme-5 | `#ffbfe1` pink | `#f5420d` orange | 2.43 | `#2e159b` deep blue | 8.13 |
 | fc47b201… | `#f5420d` orange | `#ffbfe1` pink | 2.43 | `#141417` dark | 5.5 |
@@ -144,7 +144,7 @@ Colour schemes are stored in `config/settings_data.json`, which the theme editor
 | 356e8cfa… | `#c91325` red | `#a6c4eb` blue | 3.25 | `#ffffff` white | 5.9 |
 | About Us / Celebrate With Us blocks 1 & 3 | pink / orange | orange / pink | 2.43 | `#141417` | ≥ 5.5 |
 
-After changing them, re-run axe on the home page, `/collections/all`, a product page, `/pages/about-us` and `/blogs/press`.
+Re-run axe on the home page, `/collections/all`, a product page, `/pages/about-us` and `/blogs/press`.
 
 ---
 
