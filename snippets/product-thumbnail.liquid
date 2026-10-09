@@ -26,8 +26,15 @@
 {% endcomment %}
 
 {%- liquid
+  comment
+    Performance: the first product media is the LCP element on product pages; give it
+    fetchpriority="high" so the browser does not queue it behind scripts.
+  endcomment
+  assign fetch_priority = 'auto'
   unless lazy_load == false
     assign lazy = 'lazy'
+  else
+    assign fetch_priority = 'high'
   endunless
 
   assign desktop_columns = 1
@@ -80,6 +87,7 @@
         | image_tag:
           class: image_class,
           loading: lazy,
+          fetchpriority: fetch_priority,
           sizes: sizes,
           widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946'
       }}
