@@ -1667,6 +1667,19 @@ details[open]>.share-button__fallback {
   box-shadow: none;
 }
 
+/* WCAG 2.4.7: the resting border and the :focus box-shadow were made identical by the theme
+   customisation, so keyboard focus on text fields was invisible. Add a distinct double ring. */
+.field__input:focus-visible,
+.customer .field input:focus-visible,
+.select__select:focus-visible,
+.customer select:focus-visible {
+  box-shadow:
+    0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground)),
+    0 0 0 calc(0.3rem + var(--inputs-border-width)) rgb(var(--color-background)),
+    0 0 0 calc(0.5rem + var(--inputs-border-width)) rgba(var(--color-foreground), 0.6);
+  outline: 0;
+}
+
 .text-area,
 .select {
   display: flex;

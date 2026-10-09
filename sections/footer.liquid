@@ -88,7 +88,7 @@
                               href="{{ link.url }}"
                               class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
                             -->
-                            <span class="footer-sub-title list-menu__item">{{ link.title }}</span>
+                            <h3 class="footer-sub-title list-menu__item">{{ link.title | escape }}</h3>
                             <!-- /a -->
 
                             {%- if link.links != blank -%}
@@ -111,8 +111,15 @@
                             {% endif %}
                             {% if forloop.index == 2 and blocks_loop.index == 3 %}
                               <div class="credits list-menu__item">
-                                <span>Site Credits</span
-                                ><span
+                                <button
+                                  type="button"
+                                  class="credits__toggle"
+                                  aria-expanded="false"
+                                  aria-controls="credits-detail-{{ section.id }}"
+                                >
+                                  Site Credits
+                                </button>
+                                <span class="credits__detail" id="credits-detail-{{ section.id }}" hidden
                                   >design by <a href="http://greetingsfrom.studio/">Greetings From Studio</a> <br>
                                   built by <a href="https://piroc.com/">piroc media</a></span
                                 >
@@ -342,15 +349,26 @@
 </footer>
 
 <modal-dialog id="PopupModal-newsletter" class="newsletter-overlay">
-  <div class="newsletter" role="dialog">
-    <div class="newsletter-preheader">Hey There!</div>
-    <div class="newsletter-header">MAY WE POP INTO YOUR INBOX?</div>
+  {% comment %}
+    WCAG 2.2: the dialog needs a focusable container (tabindex="-1") so Dawn's
+    trapFocus() can move focus into it, an accessible name (aria-labelledby),
+    and aria-modal so assistive tech treats the page behind it as inert.
+  {% endcomment %}
+  <div
+    class="newsletter"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="PopupModal-newsletter-title"
+    tabindex="-1"
+  >
+    <p class="newsletter-preheader">Hey There!</p>
+    <h2 class="newsletter-header" id="PopupModal-newsletter-title">MAY WE POP INTO YOUR INBOX?</h2>
 
-    {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+    {%- form 'customer', id: 'ContactPopup', class: 'footer__newsletter newsletter-form' -%}
       <input type="hidden" name="contact[tags]" value="Non Locals, newsletter">
       <div class="newsletter-form__field-wrapper">
         <input
-          id="NewsletterForm--{{ section.id }}"
+          id="NewsletterForm--popup"
           type="email"
           name="contact[email]"
           class="field__input"
@@ -362,35 +380,34 @@
           {% if form.errors %}
             autofocus
             aria-invalid="true"
-            aria-describedby="ContactFooter-error"
+            aria-describedby="ContactPopup-error"
           {% elsif form.posted_successfully? %}
-            aria-describedby="ContactFooter-success"
+            aria-describedby="ContactPopup-success"
           {% endif %}
           placeholder="{{ 'newsletter.label' | t }}"
           required
         >
-        <label class="field__label" for="NewsletterForm--{{ section.id }}">
+        <label class="field__label" for="NewsletterForm--popup">
           {{ 'newsletter.label' | t }}
         </label>
         <button
           type="submit"
           class="button"
           name="commit"
-          aria-label="SIGN UP"
           value="SIGN UP"
         >
           SIGN UP
         </button>
 
-                <div class="local-check">
-                  <label for="mce-MMERGE60">I'm a local
-                  <input type="checkbox" name="contact[tags]" id="mce-MMERGE60" value="Locals Only,newsletter">
-                    <span class="custom-checkmark"></span>
-                  </label>
-                </div>
-        
+        <div class="local-check">
+          <label for="LocalCheck-popup">I'm a local
+          <input type="checkbox" name="contact[tags]" id="LocalCheck-popup" value="Locals Only,newsletter">
+            <span class="custom-checkmark"></span>
+          </label>
+        </div>
+
         {%- if form.errors -%}
-          <small class="newsletter-form__message form__message" id="ContactFooter-error">
+          <small class="newsletter-form__message form__message" id="ContactPopup-error">
             {%- render 'icon-error' -%}
             {{- form.errors.translated_fields.email | capitalize }}
             {{ form.errors.messages.email -}}
@@ -400,7 +417,7 @@
       {%- if form.posted_successfully? -%}
         <h3
           class="newsletter-form__message newsletter-form__message--success form__message"
-          id="ContactFooter-success"
+          id="ContactPopup-success"
           tabindex="-1"
           autofocus
         >
@@ -410,7 +427,9 @@
       {%- endif -%}
     {%- endform -%}
 
-    <div id="ModalClose-newsletter" class="close">✖</div>
+    <button type="button" id="ModalClose-newsletter" class="close" aria-label="{{ 'accessibility.close' | t }}">
+      {% render 'icon-close' %}
+    </button>
   </div>
 </modal-dialog>
 

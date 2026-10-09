@@ -71,6 +71,12 @@
   border: 2px solid #2e159b;
 }
 
+/* Keyboard focus on the (visually hidden) native checkbox — WCAG 2.4.7 */
+.local-check label input:focus-visible ~ .custom-checkmark {
+  outline: 2px solid #2e159b;
+  outline-offset: 3px;
+}
+
 /* On mouse-over, add a grey background color */
 .local-check label:hover input ~ .custom-checkmark {
   background-color: #ccc;

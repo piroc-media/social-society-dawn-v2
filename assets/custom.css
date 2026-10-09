@@ -24,6 +24,12 @@
   --gradient-background: #FCFAF5;
 }
 
+/* WCAG 2.4.11 Focus Not Obscured: the header is always sticky, so give the document
+   scroll padding equal to the header height (set by sticky-header in header.liquid). */
+html {
+  scroll-padding-top: calc(var(--header-height, 0px) + 1rem);
+}
+
 hr {
   background-color: black;
 }
@@ -141,9 +147,19 @@ header-drawer {
 
   .search-modal__form .field:after,
   .search-modal__form .field:before,
-  .search-modal__form .field:hover.field:after,
-  .search-modal__form .field__input:focus {
+  .search-modal__form .field:hover.field:after {
     box-shadow: none;
+  }
+
+  /* WCAG 2.4.7 / 1.4.11: the inline header search keeps a visible boundary and focus ring */
+  .search-modal__form .field__input {
+    box-shadow: 0 0 0 1px rgba(var(--color-foreground), 0.55);
+  }
+
+  .search-modal__form .field__input:focus-visible {
+    box-shadow: 0 0 0 2px rgb(var(--color-foreground));
+    outline: 2px solid rgb(var(--color-foreground));
+    outline-offset: 2px;
   }
 
   .search-modal__form .field__input {
@@ -346,9 +362,11 @@ footer {
           > ul {
             > li {
               > a {
+                display: inline-block;
                 font-size: 14px;
                 line-height: 1.5;
                 letter-spacing: 1.5px;
+                padding: 0.3rem 0; /* ≥ 24px tall target — WCAG 2.5.8 */
               }
             }
           }
@@ -375,15 +393,30 @@ footer {
 
   .credits {
     margin-top: 20px;
-    cursor: pointer;
     font-size: 14px;
     line-height: 20px;
+  }
 
-    span:first-child {}
+  .credits__toggle {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0.3rem 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    cursor: pointer;
 
-    span:last-child {
-      display: none;
+    &:focus-visible {
+      outline: 2px solid rgb(var(--color-foreground));
+      outline-offset: 2px;
     }
+  }
+
+  .credits__detail[hidden] {
+    display: none;
   }
 }
 
@@ -435,6 +468,7 @@ footer {
     .newsletter-preheader {
       font-family: EdwardianScript;
       font-size: 38px;
+      margin: 0;
     }
 
     .newsletter-header {
@@ -443,7 +477,7 @@ footer {
       line-height: 57px;
       max-width: 400px;
       text-align: center;
-      margin-bottom: 3px;
+      margin: 0 0 3px;
     }
 
     .newsletter-form {
@@ -466,8 +500,10 @@ footer {
         font-family: Picaresk;
       }
 
-      input[type="email"]:focus {
-        outline: none;
+      /* WCAG 2.4.7: keep a visible focus indicator (Dawn's box-shadow is reset above) */
+      input[type="email"]:focus-visible {
+        outline: 2px solid var(--color-dark);
+        outline-offset: 3px;
         box-shadow: none;
       }
 
@@ -476,7 +512,7 @@ footer {
         right: 0;
         bottom: 5px;
         font-family: Picaresk;
-        font-size: 9px;
+        font-size: 1.2rem;
         font-weight: bold;
         color: var(--color-pink);
         background-color: var(--color-deep-blue);
@@ -485,31 +521,50 @@ footer {
       }
     }
 
+    /* Close button: a real <button>, 32px target (WCAG 2.5.8), dark-on-white so the
+       icon and ring pass 3:1 against both the pink panel and the page behind it. */
     .close {
       position: absolute;
       bottom: 300px;
       left: calc(50% + 300px);
-      border: 1px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: 1px solid var(--color-dark);
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      color: white;
-      font-weight: normal;
-      font-family: Arial;
-      text-decoration: none;
-      text-align: center;
-      vertical-align: middle;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
+      background-color: #FFF;
+      color: var(--color-dark);
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       cursor: pointer;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--color-dark);
+        outline-offset: 3px;
+      }
     }
   }
 }
 
 @media (max-width: 749px) {
 
+  /* Keep the close button inside the viewport at every width (the panel itself is wider
+     than small screens); anchor it to the viewport instead of the 1050px panel. */
   .newsletter-overlay .newsletter .close {
-    left: calc(50% + 160px);
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    bottom: auto;
+    left: auto;
   }
 
   footer {
@@ -587,6 +642,9 @@ main {
   }
 }
 
+/* Hero/sub-hero colour schemes. WCAG 1.4.3: every text/background pair below is ≥ 4.5:1.
+   On light backgrounds (violet, lime, pink, blue, teal) white <strong> text was 1.3–2.2:1,
+   so <strong> now inherits the scheme text colour there. */
 .section-hero--color-scheme-violet {
   color: #000000;
 
@@ -595,7 +653,7 @@ main {
   }
 
   strong {
-    color: #FFF !important;
+    color: #000000 !important;
   }
 }
 
@@ -612,14 +670,15 @@ main {
 }
 
 .section-hero--color-scheme-red {
-  color: var(--color-pink) !important;
+  /* pink on red was 3.9:1 (fails body copy); white on red is 5.9:1 */
+  color: #FFF !important;
 
   * {
-    color: var(--color-pink) !important;
+    color: #FFF !important;
   }
 
   strong {
-    color: #FFF !important;
+    color: var(--color-pink) !important; /* 3.9:1 — headline-size only */
   }
 }
 
@@ -631,7 +690,7 @@ main {
   }
 
   strong {
-    color: #FFF !important;
+    color: var(--color-deep-blue) !important;
   }
 }
 
@@ -648,26 +707,28 @@ main {
 }
 
 .section-hero--color-scheme-pink {
-  color: var(--color-orange) !important;
+  /* orange on pink was 2.4:1; deep blue on pink is 8.1:1 (same pair as the pink theme scheme) */
+  color: var(--color-deep-blue) !important;
 
   * {
-    color: var(--color-orange) !important;
+    color: var(--color-deep-blue) !important;
   }
 
   strong {
-    color: #FFF !important;
+    color: var(--color-deep-blue) !important;
   }
 }
 
 .section-hero--color-scheme-blue {
-  color: var(--color-red) !important;
+  /* red on blue was 3.3:1 (fails body copy); deep blue on blue is 7.3:1 */
+  color: var(--color-deep-blue) !important;
 
   * {
-    color: var(--color-red) !important;
+    color: var(--color-deep-blue) !important;
   }
 
   strong {
-    color: #FFF !important;
+    color: var(--color-deep-blue) !important;
   }
 }
 
@@ -679,19 +740,20 @@ main {
   }
 
   strong {
-    color: #FFF !important;
+    color: var(--color-green) !important;
   }
 }
 
 .section-hero--color-scheme-orange {
-  color: #f5420d !important;
+  /* was #f5420d on #f5420d (invisible); dark on orange is 5.5:1 */
+  color: var(--color-dark) !important;
 
   * {
-    color: #f5420d !important;
+    color: var(--color-dark) !important;
   }
 
   strong {
-    color: #FFF !important;
+    color: #FFF !important; /* 3.7:1 — headline-size only */
   }
 }
 
@@ -743,8 +805,9 @@ main {
         }
 
         .headline {
-          font-size: calc(4vw + 4vh + 1.23vmin);
-          line-height: calc(4vw + 4vh + 1.6vmin);
+          /* WCAG 1.4.4: include a rem term so the heading grows with browser zoom (F94) */
+          font-size: calc(1.2rem + 3.5vw + 3.5vh + 1vmin);
+          line-height: calc(1.4rem + 3.5vw + 3.5vh + 1.3vmin);
           margin: 0;
           margin-top: 10px;
         }
@@ -848,6 +911,8 @@ svg.clips {
 .section:not(.section-featured-collection) .product-grid button,
 .product-form__buttons button {
   background-color: rgb(var(--color-violet-rgb));
+  /* WCAG 1.4.3: white on #BFA3DE is 2.2:1; dark (#141417) on #BFA3DE is 8.3:1 */
+  color: var(--color-dark);
 }
 
 /* Section Image with Text */
@@ -1048,8 +1113,8 @@ svg.clips {
 
     .collection-hero__title {
       text-transform: uppercase;
-      font-size: calc(4vw + 4vh + 1.6vmin);
-      line-height: 80px;
+      font-size: calc(1.2rem + 3.5vw + 3.5vh + 1.3vmin); /* WCAG 1.4.4 (F94) */
+      line-height: 1;
       margin-top: 15px;
       margin-bottom: 0;
     }
@@ -1092,7 +1157,7 @@ svg.clips {
 
           &.red {
             background: var(--color-red);
-            color: var(--color-pink);
+            color: #FFF; /* WCAG 1.4.3: pink on red was 3.9:1, white on red is 5.9:1 */
           }
         }
       }
@@ -1132,7 +1197,7 @@ svg.clips {
 }
 
 .collection-interjection:is(.color-orange) .text {
-  color: var(--color-pink) !important;
+  color: var(--color-dark) !important; /* WCAG 1.4.3: pink on orange was 2.4:1, dark is 5.5:1 */
 }
 
 .collection-interjection:is(.color-lime) .text {
@@ -1167,6 +1232,7 @@ svg.clips {
     align-items: center;
     padding: 3vh 3vw;
 
+    .preheading,
     .preheading p {
       font-family: EdwardianScript;
       font-size: 32px;
@@ -1175,6 +1241,7 @@ svg.clips {
       margin-bottom: 12px;
     }
 
+    .heading,
     .heading p {
       text-align: center;
       font-family: ABCROMCompressed-Heavy, sans-serif;
@@ -1313,7 +1380,7 @@ svg.clips {
 
         a {
           color: rgb(var(--color-foreground));
-          text-decoration: none;
+          text-decoration: underline; /* WCAG 1.4.1: links were the same colour as text with no underline */
         }
       }
 
@@ -1435,8 +1502,9 @@ svg.clips {
   .address {
     padding-top: 30px;
     background-color: var(--color-pink);
-    color: var(--color-red);
-    --color-foreground: var(--color-red-rgb);
+    /* WCAG 1.4.3: red on pink was 3.9:1 for the 13px address; deep blue on pink is 8.1:1 */
+    color: var(--color-deep-blue);
+    --color-foreground: var(--color-deep-blue-rgb);
 
     .address--heading {
       font-size: 60px;
@@ -1515,8 +1583,18 @@ svg.clips {
     .card__information {
       text-align: center;
 
+      /* Visually hidden (not display:none) so screen readers still get the article title
+         and each "VIEW ARTICLE" link has context — WCAG 2.4.4 */
       .card__heading {
-        display: none;
+        position: absolute !important;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        clip: rect(0 0 0 0);
+        word-wrap: normal !important;
       }
     }
   }
@@ -1775,10 +1853,36 @@ svg.clips {
 
     .event-rsvp--close {
       position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 20px;
+      top: 4px;
+      right: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px; /* ≥ 24px target — WCAG 2.5.8 */
+      padding: 0;
+      border: 0;
+      background: none;
+      color: inherit;
       cursor: pointer;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
+    }
+
+    .event-rsvp__dialog {
+      position: relative;
+    }
+
+    .event-rsvp__dialog:focus {
+      outline: none;
     }
   }
 }
