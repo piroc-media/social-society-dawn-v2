@@ -474,24 +474,23 @@
 
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
-    "@type": "Article",
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
     "articleBody": {{ article.content | strip_html | json }},
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": {{ request.origin | append: page.url | json }}
+      "@id": {{ request.origin | append: article.url | json }}
     },
     "headline": {{ article.title | json }},
-    {% if article.excerpt != blank %}
-      "description": {{ article.excerpt | strip_html | json }},
-    {% endif %}
+    "description": {{ article.excerpt_or_content | strip_html | truncate: 300 | json }},
+    "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
     {% if article.image %}
       "image": [
         {{ article | image_url: width: 1920 | prepend: "https:" | json }}
       ],
     {% endif %}
-    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
     "author": {
       "@type": "Person",
       "name": {{ article.author | json }}
@@ -521,14 +520,19 @@
     if price_raw == 'FREE' or price_raw contains 'FREE'
       assign event_price = '0'
     elsif price_raw != blank and event_sold_out == false
-      assign event_price = price_raw | remove: '$' | remove: ',' | split: ' ' | first
+      assign event_price = price_raw | remove: '$' | remove: ',' | split: '/' | first | split: ' ' | first
     endif
     assign event_url = request.origin | append: article.url
+    assign ticket_url = article.metafields.custom.press_link_url | default: article.url
+    unless ticket_url contains '//'
+      assign ticket_url = request.origin | append: ticket_url
+    endunless
   -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Event",
+      "@id": {{ event_url | append: '#event' | json }},
       "name": {{ article.title | json }},
       "url": {{ event_url | json }},
       "startDate": {{ event_start | json }},
@@ -551,11 +555,11 @@
         {% if shop.address.address1 != blank %}
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": {{ shop.address.address1 | append: ' ' | append: shop.address.address2 | strip | json }},
+            "streetAddress": {{ shop.address.street | json }},
             "addressLocality": {{ shop.address.city | json }},
             "addressRegion": {{ shop.address.province_code | json }},
             "postalCode": {{ shop.address.zip | json }},
-            "addressCountry": {{ shop.address.country | json }}
+            "addressCountry": {{ shop.address.country_code | json }}
           }
         {% else %}
           "address": {{ article.metafields.custom.event_location | default: shop.name | json }}
@@ -569,7 +573,8 @@
       {% if event_price != blank or event_sold_out %}
         "offers": {
           "@type": "Offer",
-          "url": {{ event_url | json }},
+          "url": {{ ticket_url | json }},
+          "validFrom": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
           {% if event_price != blank %}
             "price": {{ event_price | json }},
             "priceCurrency": {{ shop.currency | json }},

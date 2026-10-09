@@ -3,12 +3,22 @@
     {%- case block.type -%}
       {%- when 'image' -%}
         <div class="grid__item section-hero--image">
-          <img
-            src="{{ block.settings.image.src | image_url: width: 1440 }}"
-            width="{{ block.settings.image.width }}"
-            height="{{ block.settings.image.height }}"
-            alt="{{ block.settings.image.alt | escape }}"
-          >
+          {%- comment -%}
+            SEO/CWV: this is usually the LCP image. Serve a responsive srcset instead of a
+            fixed 1440px asset and give it fetch priority so it is not queued behind CSS/JS.
+          {%- endcomment -%}
+          {%- if block.settings.image != blank -%}
+            {{
+              block.settings.image
+              | image_url: width: 1920
+              | image_tag:
+                widths: '375, 550, 750, 1100, 1440, 1920',
+                sizes: '(min-width: 750px) 50vw, 100vw',
+                loading: 'eager',
+                fetchpriority: 'high',
+                alt: block.settings.image.alt
+            }}
+          {%- endif -%}
         </div>
 
       {%- when 'content' -%}

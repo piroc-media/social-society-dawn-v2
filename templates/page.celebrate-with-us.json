@@ -48,7 +48,7 @@
             "right_background": "#bfa3de",
             "right_text_color": "#141417",
             "right_icon": "palm",
-            "right_content": "<h2>JOIN THE PARTY!</h2><p>Our community has been LOVING our in-store events. From thoughtful holiday crafts to learning professional calligraphy, our event attendees have had a blast by getting creative at The Social Society. We are constantly adding new events to our schedule and the tickets sell out quickly! Take a look at the most current events and sign up for our Locals Only Newsletter to stay in the loop.</p><p></p><p>ALL <a href=\"https://thesocialsociety.com/blogs/in-store-events\" title=\"https://thesocialsociety.com/blogs/in-store-events\">IN-STORE EVENTS</a> LISTED HERE</p>"
+            "right_content": "<h2>JOIN THE PARTY!</h2><p>Our community has been LOVING our in-store events. From thoughtful holiday crafts to learning professional calligraphy, our event attendees have had a blast by getting creative at The Social Society. We are constantly adding new events to our schedule and the tickets sell out quickly! Take a look at the most current events and sign up for our Locals Only Newsletter to stay in the loop.</p><p></p><p>ALL <a href=\"/blogs/in-store-events\" title=\"/blogs/in-store-events\">IN-STORE EVENTS</a> LISTED HERE</p>"
           }
         },
         "section_gRddeb": {
@@ -78,7 +78,7 @@
             "right_background": "#a2e0e0",
             "right_text_color": "#141417",
             "right_icon": "hat",
-            "right_content": "<h2>The Social Society Blog</h2><p>Our team of event experts has been planning parties for over 15 years. We are constantly sharing out daily creative ideas on entertaining, style, celebrations and more. Search for our posts on specific holidays & themes or simply catch up on our recent musings. </p><p></p><p>READ <a href=\"https://thesocialsociety.com/blogs/party-like-us\" title=\"https://thesocialsociety.com/blogs/party-like-us\">THE BLOG</a> HERE</p>"
+            "right_content": "<h2>The Social Society Blog</h2><p>Our team of event experts has been planning parties for over 15 years. We are constantly sharing out daily creative ideas on entertaining, style, celebrations and more. Search for our posts on specific holidays & themes or simply catch up on our recent musings. </p><p></p><p>READ <a href=\"/blogs/party-like-us\" title=\"/blogs/party-like-us\">THE BLOG</a> HERE</p>"
           }
         }
       },
@@ -88,7 +88,9 @@
         "section_gRddeb",
         "section_fcgkFH"
       ],
-      "settings": {}
+      "settings": {
+        "heading_tag": "h1"
+      }
     },
     "172044015753b1f47a": {
       "type": "apps",

@@ -24,6 +24,8 @@
 
 {% if press_blog %}
   {% assign paginate_by = 24 %}
+{% else %}
+  {% assign paginate_by = 12 %}
 {% endif %}
 
 {%- paginate blog.articles by paginate_by -%}

@@ -461,24 +461,23 @@
 
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
-    "@type": "Article",
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
     "articleBody": {{ article.content | strip_html | json }},
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": {{ request.origin | append: page.url | json }}
+      "@id": {{ request.origin | append: article.url | json }}
     },
     "headline": {{ article.title | json }},
-    {% if article.excerpt != blank %}
-      "description": {{ article.excerpt | strip_html | json }},
-    {% endif %}
+    "description": {{ article.excerpt_or_content | strip_html | truncate: 300 | json }},
+    "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
     {% if article.image %}
       "image": [
         {{ article | image_url: width: 1920 | prepend: "https:" | json }}
       ],
     {% endif %}
-    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
     "author": {
       "@type": "Person",
       "name": {{ article.author | json }}

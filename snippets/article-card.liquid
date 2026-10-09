@@ -81,7 +81,7 @@
         <div class="card__content">
           <div class="card__information">
             <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-              {% if blog.handle == 'party-like-us' %}
+              {% if blog.handle == 'party-like-us' and article.metafields.custom.external_blog_link_to_lmp != blank %}
                 <a href="{{ article.metafields.custom.external_blog_link_to_lmp }}" class="full-unstyled-link">
                   {{ article.title | truncate: 50 | escape }}
                 </a>
@@ -160,7 +160,7 @@
               {%- endif -%}
             </div>
 
-            {% if blog.handle == 'party-like-us' %}
+            {% if blog.handle == 'party-like-us' and article.metafields.custom.external_blog_link_to_lmp != blank %}
               <a
                 href="{{ article.metafields.custom.external_blog_link_to_lmp }}"
                 class="read-more party-like-us-read-more-lnk"

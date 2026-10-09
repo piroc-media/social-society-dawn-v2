@@ -1,7 +1,8 @@
 <div class="page-width page-width-full">
   <div class="grid grid--gapless grid--1-col grid--2-col-tablet">
     <div class="grid__item content">
-      <div class="heading">{{ section.settings.heading }}</div>{% comment %} richtext: merchants may type the page <h1> here {% endcomment %}
+      {% comment %} SEO: the home page's h1 is the logo (Dawn header); demote any <h1> typed into this richtext {% endcomment %}
+      <div class="heading">{{ section.settings.heading | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' }}</div>
       <div class="subheading">{{ section.settings.subheading }}</div>
 
       <div class="products">

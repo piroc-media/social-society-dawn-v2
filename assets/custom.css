@@ -956,7 +956,8 @@ svg.clips {
       margin-bottom: 0;
     }
 
-    > h1 {
+    > h1,
+    > h2 {
       font-size: 60px;
       margin-bottom: 0;
     }

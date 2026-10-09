@@ -36,7 +36,9 @@
               {{ section.settings.heading }}
             </h2>
 
-            <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a>
+            {% if product.collections.first %}
+              <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a>
+            {% endif %}
           </div>
         </li>
         {% for recommendation in recommendations.products %}

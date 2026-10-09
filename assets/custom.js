@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
   for (let i = 0, linksLength = links.length; i < linksLength; i++) {
     if (links[i].hostname && links[i].hostname !== window.location.hostname) {
       links[i].target = '_blank';
-      links[i].rel = 'noreferrer noopener';
+      links[i].rel = 'noopener';
       const describedBy = (links[i].getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
       if (describedBy.indexOf('a11y-new-window-message') === -1) {
         describedBy.push('a11y-new-window-message');

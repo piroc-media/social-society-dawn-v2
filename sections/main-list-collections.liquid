@@ -23,9 +23,33 @@
       class="collection-list grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
       role="list"
     >
-      {% comment %} for collection in collections {% endcomment %}
-        {% for link in linklists.all-collections.links %}
+      {% comment %}
+        The page lists the "all-collections" menu so the merchant controls order; if that menu
+        is empty or missing, fall back to every collection so none are orphaned (SEO).
+      {% endcomment %}
+      {%- liquid
+        assign menu_links = linklists['all-collections'].links
+        assign use_menu = false
+        if menu_links.size > 0
+          assign use_menu = true
+        endif
+      -%}
+        {% for link in collections %}
+        {% if use_menu %}{% continue %}{% endif %}
+        {% assign collection = link %}
+          <li
+            class="collection-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            {% render 'card-collection', card_collection: collection, media_aspect_ratio: section.settings.image_ratio, columns: 3 %}
+          </li>
+        {% endfor %}
+        {% for link in menu_links %}
         {% assign collection = link.object %}
+        {% if collection.handle == blank %}{% continue %}{% endif %}
           <li
             class="collection-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {% if settings.animations_reveal_on_scroll %}

@@ -6,7 +6,7 @@
           class="left-block left-block-static"
           style="background-color: {{ block.settings.left_background }}; color: {{ block.settings.left_text_color }}"
         >
-          {%- if forloop.first and section.index == 1 -%}<h1 class="headline">{{ block.settings.left_headline }}</h1>{%- else -%}<h2 class="headline">{{ block.settings.left_headline }}</h2>{%- endif -%}
+          {%- if forloop.first and section.settings.heading_tag == 'h1' -%}<h1 class="headline">{{ block.settings.left_headline }}</h1>{%- else -%}<h2 class="headline">{{ block.settings.left_headline }}</h2>{%- endif -%}
 
           <div class="image">
             <div
@@ -136,7 +136,19 @@
 {
   "name": "About Us Static",
   "class": "section-about-us section-about-us-static",
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "First block headline tag",
+      "info": "SEO/accessibility: every page needs one H1. Use H1 when this is the first section on the page.",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" }
+      ]
+    }
+  ],
   "blocks": [
     {
       "type": "section",

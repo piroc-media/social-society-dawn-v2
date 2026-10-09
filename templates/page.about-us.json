@@ -63,7 +63,7 @@
             "right_background": "#ffbfe1",
             "right_text_color": "#000000",
             "right_icon": "bow",
-            "right_content": "<h2>Our Expert Stylists are Here to Help!</h2><p>Create a <em><strong>custom party in a box</strong></em> for your next event. Our team of stylists will design, source, curate and ship everything you need for your next celebration. Details like themed paper plates, creative napkins, tailored color palettes and unique decor will not go unnoticed. <a href=\"https://www.littlemisspartyplanner.com/blog/what-is-a-custom-party-in-a-box\" target=\"_blank\" title=\"https://www.littlemisspartyplanner.com/blog/what-is-a-custom-party-in-a-box\">Click here to learn more</a> and join the party!</p><p><a href=\"https://thesocialsociety.com/pages/party-in-a-box\" title=\"Party in a Box\">REQUEST A QUOTE</a></p>"
+            "right_content": "<h2>Our Expert Stylists are Here to Help!</h2><p>Create a <em><strong>custom party in a box</strong></em> for your next event. Our team of stylists will design, source, curate and ship everything you need for your next celebration. Details like themed paper plates, creative napkins, tailored color palettes and unique decor will not go unnoticed. <a href=\"https://www.littlemisspartyplanner.com/blog/what-is-a-custom-party-in-a-box\" target=\"_blank\" title=\"https://www.littlemisspartyplanner.com/blog/what-is-a-custom-party-in-a-box\">Click here to learn more</a> and join the party!</p><p><a href=\"/pages/party-in-a-box\" title=\"Party in a Box\">REQUEST A QUOTE</a></p>"
           }
         },
         "section_zBxyTp": {
@@ -88,7 +88,9 @@
         "section_GJmxQU",
         "section_zBxyTp"
       ],
-      "settings": {}
+      "settings": {
+        "heading_tag": "h1"
+      }
     }
   },
   "order": [

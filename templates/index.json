@@ -23,7 +23,7 @@
           "settings": {
             "subtitle": "<p>Who's Ready....</p>",
             "headline": "<p>For some Football!</p>",
-            "description": "<p>It’s GAME TIME! 🏈 Whether you’re hosting the whole crew or just showing up for the snacks, we’ve got everything you need to make game day a WIN. Shop football plates, cups, napkins, décor, balloons and more to bring the party from kickoff to the final whistle.</p><p><a href=\"/collections/football\" target=\"_blank\" title=\"Football\"><strong>Huddle up and shop all things FOOTBALL!</strong></a></p>"
+            "description": "<p>It’s GAME TIME! 🏈 Whether you’re hosting the whole crew or just showing up for the snacks, we’ve got everything you need to make game day a WIN. Shop football plates, cups, napkins, décor, balloons and more to bring the party from kickoff to the final whistle.</p><p><a href=\"/collections/football\" title=\"Football\"><strong>Huddle up and shop all things FOOTBALL!</strong></a></p>"
           }
         }
       },
@@ -80,7 +80,7 @@
         "text_DDdyhh": {
           "type": "text",
           "settings": {
-            "text": "<p>Whether you're brand new to mahjong or ready to sharpen your skills, we’ve got a seat at the table. Join us for <a href=\"https://thesocialsociety.com/blogs/in-store-events\" target=\"_blank\" title=\"https://thesocialsociety.com/blogs/in-store-events\">Learn to Play lessons</a>, private guided play, and upcoming open play nights. We also carry beautiful tiles, mats, and accessories from Oh My Mahjong — available with an exclusive 10% discount.</p><p>Want to learn more or reserve your spot? Contact us and we’ll help you get started.</p>",
+            "text": "<p>Whether you're brand new to mahjong or ready to sharpen your skills, we’ve got a seat at the table. Join us for <a href=\"/blogs/in-store-events\" title=\"/blogs/in-store-events\">Learn to Play lessons</a>, private guided play, and upcoming open play nights. We also carry beautiful tiles, mats, and accessories from Oh My Mahjong — available with an exclusive 10% discount.</p><p>Want to learn more or reserve your spot? Contact us and we’ll help you get started.</p>",
             "text_style": "body"
           }
         },
@@ -169,8 +169,8 @@
       "settings": {
         "image": "shopify://shop_images/BTM_9603.jpg",
         "heading": "<h1>Celebrate with Balloons</h1>",
-        "subheading": "<p>Halloween is just around the corner, milestone birthdays never go out of style, and the season is full of reasons to celebrate. From custom balloon bouquets and statement installations to festive fall and Halloween designs, we'll help you create something unforgettable for every occasion.<br/><strong>Shop </strong><a href=\"/collections/balloons\" target=\"_blank\" title=\"Balloons\"><strong>balloons</strong></a><strong> for every celebration and every “just because” moment.</strong></p>",
-        "url": "https://thesocialsociety.com/pages/balloons",
+        "subheading": "<p>Halloween is just around the corner, milestone birthdays never go out of style, and the season is full of reasons to celebrate. From custom balloon bouquets and statement installations to festive fall and Halloween designs, we'll help you create something unforgettable for every occasion.<br/><strong>Shop </strong><a href=\"/collections/balloons\" title=\"Balloons\"><strong>balloons</strong></a><strong> for every celebration and every “just because” moment.</strong></p>",
+        "url": "/pages/balloons",
         "button_text": "Create Your Bundle"
       }
     },
@@ -238,7 +238,7 @@
           "type": "button",
           "settings": {
             "button_label": "JOIN THE PARTY",
-            "button_link": "https://thesocialsociety.com/blogs/in-store-events",
+            "button_link": "/blogs/in-store-events",
             "button_style_secondary": false,
             "newsletter_link": false
           }

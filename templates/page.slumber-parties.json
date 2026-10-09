@@ -45,6 +45,7 @@
         ".description {font-size: 1em;}"
       ],
       "settings": {
+        "heading_tag": "h1",
         "color": "violet"
       }
     },

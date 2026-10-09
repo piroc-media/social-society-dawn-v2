@@ -388,11 +388,11 @@
     {% if shop.address.address1 != blank %}
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": {{ shop.address.address1 | append: ' ' | append: shop.address.address2 | strip | json }},
+        "streetAddress": {{ shop.address.street | json }},
         "addressLocality": {{ shop.address.city | json }},
         "addressRegion": {{ shop.address.province_code | json }},
         "postalCode": {{ shop.address.zip | json }},
-        "addressCountry": {{ shop.address.country | json }}
+        "addressCountry": {{ shop.address.country_code | json }}
       },
     {% endif %}
     {% if section.settings.seo_latitude != blank and section.settings.seo_longitude != blank %}
@@ -450,14 +450,13 @@
       "type": "textarea",
       "id": "seo_opening_hours",
       "label": "Opening hours",
-      "info": "One line per range in schema.org format, e.g. \"Tu-Fr 11:00-18:00\". Address and phone come from Settings > Store details.",
+      "info": "One line per range in schema.org format, e.g. \"Tu-Fr 11:00-18:00\". Keep in sync with the hours on the Contact page. Address and phone come from Settings > Store details.",
       "default": "Tu-Fr 11:00-18:00\nSa 10:00-17:00"
     },
     {
       "type": "text",
       "id": "seo_price_range",
-      "label": "Price range",
-      "default": "$$"
+      "label": "Price range (optional, e.g. $$)"
     },
     {
       "type": "text",
