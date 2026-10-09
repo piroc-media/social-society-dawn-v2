@@ -36,7 +36,7 @@
         </div>
         <div class="grid__item">
           <div class="event-hero--content">
-            <div class="event-title">{{ article.title }}</div>
+            <h1 class="event-title">{{ article.title | escape }}</h1>
 
             {% assign event_button_text = article.metafields.custom.event_button_text %}
             {% assign event_button_link = article.metafields.custom.press_link_url %}
@@ -60,15 +60,13 @@
             {% if event_button_text != blank %}
               {% if event_button_link != blank %}
                 {% if article.metafields.custom.event_price != 'SOLD OUT' %}
-                  <button class="button">
-                    <a href="{{ event_button_link }}">
-                      {{ event_button_text }}
-                    </a>
-                  </button>
+                  <a href="{{ event_button_link }}" class="button">
+                    {{ event_button_text }}
+                  </a>
                   {% endif %}
                 {% else %}
               <modal-opener data-modal="#PopupModal-event-rsvp">
-                <button class="button">
+                <button class="button" type="button" aria-haspopup="dialog" aria-controls="PopupModal-event-rsvp">
                   {{ event_button_text }}
                 </button>
               </modal-opener>
@@ -100,7 +98,7 @@
       <hr>
 
       <div class="event-share">
-        <div class="event-share--title">SHARE THIS EVENT</div>
+        <h2 class="event-share--title">SHARE THIS EVENT</h2>
 
         {% liquid
           assign share_url = article.url
@@ -109,41 +107,78 @@
       </div>
     </div>
 
+    {% comment %}
+      WCAG 2.2: see events-article.liquid — dialog role/name, labelled fields, real close button,
+      and the modal re-opens on a server-side validation error.
+    {% endcomment %}
     <modal-dialog id="PopupModal-event-rsvp" class="event-rsvp">
       {% form 'contact', return_to: '/pages/thank-you' %}
-        {{ form.errors | default_errors }}
-        <input type="hidden" name="contact[event_title]" value="{{ article.title }}">
-        <input type="hidden" name="contact[event_date]" value="{{ date }}">
+        <div role="dialog" aria-modal="true" aria-labelledby="EventRsvpTitle-{{ section.id }}" tabindex="-1" class="event-rsvp__dialog">
+        <h2 class="visually-hidden" id="EventRsvpTitle-{{ section.id }}">RSVP: {{ article.title | escape }}</h2>
+        {%- if form.errors -%}
+          <div class="form__message" role="alert" tabindex="-1" autofocus id="EventRsvp-email-error-{{ section.id }}">
+            {% render 'icon-error' %}
+            {{ form.errors.translated_fields.email | capitalize }}
+            {{ form.errors.messages.email }}
+          </div>
+        {%- endif -%}
+        <p class="caption"><span aria-hidden="true">*</span> Required field</p>
+        <input type="hidden" name="contact[event_title]" value="{{ article.title | escape }}">
+        <input type="hidden" name="contact[event_date]" value="{{ date | escape }}">
 
-        <div class="first-name">
-          <input type="text" name="contact[first_name]" id="first-name" placeholder="First name">
+        <div class="first-name field">
+          <input type="text" name="contact[first_name]" id="EventRsvp-first-name-{{ section.id }}" class="field__input" placeholder="First name" autocomplete="given-name" required aria-required="true">
+          <label class="field__label" for="EventRsvp-first-name-{{ section.id }}">First name <span aria-hidden="true">*</span></label>
         </div>
 
-        <div class="last-name">
-          <input type="text" name="contact[last_name]" id="last-name" placeholder="Last name">
+        <div class="last-name field">
+          <input type="text" name="contact[last_name]" id="EventRsvp-last-name-{{ section.id }}" class="field__input" placeholder="Last name" autocomplete="family-name" required aria-required="true">
+          <label class="field__label" for="EventRsvp-last-name-{{ section.id }}">Last name <span aria-hidden="true">*</span></label>
         </div>
 
-        <div class="phone">
-          <input type="tel" name="contact[phone]" id="phone" placeholder="Phone">
+        <div class="phone field">
+          <input type="tel" name="contact[phone]" id="EventRsvp-phone-{{ section.id }}" class="field__input" placeholder="Phone" autocomplete="tel">
+          <label class="field__label" for="EventRsvp-phone-{{ section.id }}">Phone</label>
         </div>
 
-        <div class="email">
-          <input type="email" name="contact[email]" id="email" placeholder="Email">
+        <div class="email field">
+          <input
+            type="email"
+            name="contact[email]"
+            id="EventRsvp-email-{{ section.id }}"
+            class="field__input"
+            placeholder="Email"
+            autocomplete="email"
+            spellcheck="false"
+            autocapitalize="off"
+            required
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="EventRsvp-email-error-{{ section.id }}"
+            {% endif %}
+          >
+          <label class="field__label" for="EventRsvp-email-{{ section.id }}">Email <span aria-hidden="true">*</span></label>
         </div>
 
-        <div class="people">
-          <input type="text" name="contact[people]" id="people" placeholder="Number of people">
+        <div class="people field">
+          <input type="number" min="1" inputmode="numeric" name="contact[people]" id="EventRsvp-people-{{ section.id }}" class="field__input" placeholder="Number of people" required aria-required="true">
+          <label class="field__label" for="EventRsvp-people-{{ section.id }}">Number of people <span aria-hidden="true">*</span></label>
         </div>
 
-        <div class="message">
-          <textarea name="contact[body]" id="message" placeholder="Message"></textarea>
+        <div class="message field">
+          <textarea name="contact[body]" id="EventRsvp-message-{{ section.id }}" class="text-area field__input" placeholder="Message"></textarea>
+          <label class="form__label field__label" for="EventRsvp-message-{{ section.id }}">Message</label>
         </div>
 
         <div class="submit">
           <input type="submit" value="SUBMIT" class="button">
         </div>
 
-        <div id="ModalClose-event-rsvp" class="event-rsvp--close">✖</div>
+        <button type="button" id="ModalClose-event-rsvp" class="event-rsvp--close" aria-label="{{ 'accessibility.close' | t }}">
+          {% render 'icon-close' %}
+        </button>
+        </div>
       {% endform %}
     </modal-dialog>
   {% else %}

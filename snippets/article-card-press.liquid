@@ -143,8 +143,10 @@
               {%- endif -%}
             </div>
           
-            <a href="{{ article.metafields.custom.press_link_url }}" class="read-more">
-              {% if article.metafields.custom.press_link_text != blank %}{{ article.metafields.custom.press_link_text }}{% else %}VIEW ARTICLE{% endif %}</a>
+            {% if article.metafields.custom.press_link_url != blank %}
+              <a href="{{ article.metafields.custom.press_link_url }}" class="read-more">
+                {% if article.metafields.custom.press_link_text != blank %}{{ article.metafields.custom.press_link_text }}{% else %}VIEW ARTICLE{% endif %}<span class="visually-hidden">: {{ article.title | escape }}</span></a>
+            {% endif %}
           {%- endif -%}
         </div>
         {%- if show_badge -%}

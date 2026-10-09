@@ -1,9 +1,25 @@
-<div class="share-buttons">
+{%- comment -%}
+  Renders Facebook / Pinterest share links.
+  Accepts: share_link (absolute or relative URL), text (title), image (optional image object).
+  WCAG: icons are aria-hidden with visually-hidden names; target="_blank" is announced via
+  #a11y-new-window-message (layout/theme.liquid).
+{%- endcomment -%}
+{%- liquid
+  assign share_url = share_link | default: product.url | default: request.path
+  unless share_url contains '://'
+    assign share_url = shop.url | append: share_url
+  endunless
+  assign share_text = text | default: product.title | default: page_title
+  assign share_image = image | default: article.image | default: product.featured_image
+-%}
+<nav class="share-buttons" aria-label="Share this page">
   <div class="share-button--title">Share on:</div>
 
     <a
       target="_blank"
-      href="//www.facebook.com/sharer.php?u={{ shop.url | append: product.url }}"
+      rel="noopener"
+      aria-describedby="a11y-new-window-message"
+      href="//www.facebook.com/sharer.php?u={{ share_url | url_encode }}"
       class="btn--share share-facebook"
     >
       {%- render 'icon-facebook' -%}
@@ -12,16 +28,12 @@
 
   <a
       target="_blank"
-      href="//pinterest.com/pin/create/button/?url={{ shop.url | append: product.url }}&amp;media={{ product | image_url: width: 1024 }}&amp;description={{ product.title | url_param_escape }}"
+      rel="noopener"
+      aria-describedby="a11y-new-window-message"
+      href="//pinterest.com/pin/create/button/?url={{ share_url | url_encode }}{% if share_image %}&amp;media={{ share_image | image_url: width: 1024 | url_encode }}{% endif %}&amp;description={{ share_text | url_param_escape }}"
       class="btn--share share-pinterest"
     >
       {%- render 'icon-pinterest' -%}
       <span class="visually-hidden">Pin on Pinterest</span>
     </a>
-
-  <!--a class="share-buttons--messenger" href="fb-messenger://share/?link={{ share_link }}" target="_blank">
-    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M0 10.1847C0 4.33376 4.58575 0 10.4997 0C16.4137 0 20.9994 4.33638 20.9994 10.1873C20.9994 16.0383 16.4137 20.3721 10.4997 20.3721C9.43661 20.3721 8.41814 20.2303 7.46004 19.9678C7.27367 19.918 7.07418 19.9311 6.89831 20.0098L4.81412 20.9285C4.68824 20.9841 4.55065 21.0078 4.41345 20.9977C4.27624 20.9876 4.14361 20.944 4.02722 20.8706C3.91083 20.7973 3.81425 20.6964 3.74595 20.577C3.67765 20.4576 3.63973 20.3232 3.63552 20.1857L3.57778 18.3167C3.57253 18.0858 3.46753 17.8705 3.29691 17.7183C1.25472 15.8913 0 13.2454 0 10.1847ZM7.27893 8.27115L4.19464 13.164C3.89803 13.6339 4.47551 14.1615 4.9165 13.8255L8.22916 11.3108C8.33816 11.228 8.47115 11.183 8.60802 11.1825C8.74489 11.182 8.87819 11.2262 8.98776 11.3082L11.4421 13.1483C11.6162 13.279 11.8154 13.3722 12.0274 13.4221C12.2393 13.4719 12.4593 13.4772 12.6734 13.4378C12.8875 13.3983 13.0911 13.3149 13.2713 13.1928C13.4515 13.0706 13.6045 12.9125 13.7205 12.7283L16.8074 7.83804C17.1014 7.36817 16.5239 6.83794 16.0829 7.17393L12.7703 9.68861C12.6613 9.7714 12.5283 9.81643 12.3914 9.81691C12.2545 9.81738 12.1212 9.77327 12.0117 9.69124L9.55737 7.85116C9.38329 7.72042 9.18399 7.6272 8.97206 7.57737C8.76014 7.52754 8.54018 7.52219 8.32608 7.56165C8.11198 7.60112 7.90838 7.68454 7.72815 7.80666C7.54792 7.92878 7.39496 8.08694 7.27893 8.27115Z" fill="#141417"/>
-    </svg>
-</a-->
-</div>
+</nav>

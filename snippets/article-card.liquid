@@ -126,12 +126,12 @@
       <div class="card__content">
         <div class="card__information">
           <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-            {% if article.metafields.custom.external_blog_link_to_lmp != empty %}
+            {% if article.metafields.custom.external_blog_link_to_lmp != blank %}
               <a href="{{ article.metafields.custom.external_blog_link_to_lmp }}" class="full-unstyled-link">
                 {{ article.title | truncate: 50 | escape }}
               </a>
             {% else %}
-              <a href="{{ article_url }}" class="full-unstyled-link">
+              <a href="{{ article.url }}" class="full-unstyled-link">
                 {{ article.title | truncate: 50 | escape }}
               </a>
             {% endif %}
@@ -167,7 +167,7 @@
                 >READ MORE</a
               >
             {% else %}
-              <a href="{{ article.url }}" class="read-more">READ MORE</a>
+              <a href="{{ article.url }}" class="read-more">READ MORE<span class="visually-hidden">: {{ article.title | escape }}</span></a>
             {% endif %}
           {%- endif -%}
         </div>
