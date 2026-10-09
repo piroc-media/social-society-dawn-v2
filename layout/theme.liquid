@@ -11,9 +11,13 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
-    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    {%- endunless -%}
+    {%- comment -%}
+      Performance: the theme's fonts are self-hosted in assets/ (see @font-face below), so the
+      Shopify font CDN preconnect and the Dawn font-setting preloads were pointing at files
+      that are never used. Preload the two fonts painted above the fold instead.
+    {%- endcomment -%}
+    <link rel="preload" as="font" href="{{ 'Figtree-Regular.woff2' | asset_url }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ 'ABCROMCompressed-Heavy.woff2' | asset_url }}" type="font/woff2" crossorigin>
 
     <title>
       {{ page_title }}
@@ -77,36 +81,34 @@
 
     {{ content_for_header }}
 
-    {%- liquid
-      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-    %}
-
     {% style %}
       @font-face {
         font-family: 'Figtree';
-        src: url("{{ 'Figtree-Regular.ttf' | asset_url }}") format('truetype');
+        src: url("{{ 'Figtree-Regular.woff2' | asset_url }}") format('woff2'),
+          url("{{ 'Figtree-Regular.ttf' | asset_url }}") format('truetype');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
         font-family: 'Figtree';
-        src: url("{{ 'Figtree-Medium.ttf' | asset_url }}") format('truetype');
+        src: url("{{ 'Figtree-Medium.woff2' | asset_url }}") format('woff2'),
+          url("{{ 'Figtree-Medium.ttf' | asset_url }}") format('truetype');
         font-weight: 500;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
         font-family: 'Figtree';
-        src: url("{{ 'Figtree-Bold.ttf' | asset_url }}") format('truetype');
+        src: url("{{ 'Figtree-Bold.woff2' | asset_url }}") format('woff2'),
+          url("{{ 'Figtree-Bold.ttf' | asset_url }}") format('truetype');
         font-weight: bold;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
         font-family: 'ABCROMCompressed-Heavy';
-        src: url("{{ 'ABCROMCompressed-Heavy.otf' | asset_url }}") format('otf'),
-          url("{{ 'ABCROMCompressed-Heavy.woff2' | asset_url }}") format('woff2'),
+        src: url("{{ 'ABCROMCompressed-Heavy.woff2' | asset_url }}") format('woff2'),
           url("{{ 'ABCROMCompressed-Heavy.woff' | asset_url }}") format('woff');
         font-weight: normal;
         font-style: normal;
@@ -138,14 +140,8 @@
       }
       @font-face {
         font-family: 'Imbue';
-        src: url("{{ 'Imbue_72pt-SemiBold.ttf' | asset_url }}") format('truetype');
-        font-weight: 600;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'BNChowder';
-        src: url("{{ 'BNChowder.woff' | asset_url }}") format('woff');
+        src: url("{{ 'Imbue_72pt-SemiBold.woff2' | asset_url }}") format('woff2'),
+          url("{{ 'Imbue_72pt-SemiBold.ttf' | asset_url }}") format('truetype');
         font-weight: 600;
         font-style: normal;
         font-display: swap;
@@ -356,16 +352,6 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
 
-    {%- unless settings.type_body_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
 
     {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
       {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
